@@ -29,7 +29,7 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: black;
   text-decoration: none;
 }
 
@@ -42,7 +42,8 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3.8rem;
+  font-family: 'Cinzel';
 }
 
 .title,
@@ -108,6 +109,23 @@
   margin-left: 0.5rem;
 }
 
+.button_start {
+  margin-top: 80px;
+  padding: 16px;
+  font-size: 20px;
+  color: white;
+  background: black;
+  border: 0px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.logoImage{
+  border-radius: 100%;
+  width: 10%;
+  height: 20%;
+  margin-bottom: 60px;
+
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
