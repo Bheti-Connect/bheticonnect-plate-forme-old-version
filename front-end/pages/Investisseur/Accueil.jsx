@@ -44,6 +44,10 @@ const AccueilStyled = styled.section`
         position: absolute;
         top: -10vh;
         left: 7vw;
+        @media only screen and (max-width: 1440px) {
+            width: 80%;
+            height: 125px;
+        }
     }
 }
 `

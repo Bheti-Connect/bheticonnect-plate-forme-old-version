@@ -16,7 +16,7 @@ const SubText = () => {
 
 const TextContainerStyled = styled.div`
     position: absolute;
-    width: 100%;
+    width: 80%;
     margin-top: 60px;
     margin-left: 7vw;
     .text_div_one{

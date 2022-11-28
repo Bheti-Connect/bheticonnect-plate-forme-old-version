@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBriefcase, faBell } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const Greeting = () => {
@@ -10,7 +13,7 @@ const Greeting = () => {
 
     if ((hourNow > 18) && (hourNow < 24)) {
         greet = "👍🏾 Bonsoir";
-    }   else if ((hourNow > 13) && (hourNow < 18))  {
+    }   else if ((hourNow > 12) && (hourNow < 18))  {
         greet = "😏 Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
@@ -20,7 +23,17 @@ const Greeting = () => {
 
     return (
         <GreetMe>
-            <h5>{greet}, Richard</h5>
+            <div className='greeting_div'>
+                <h5>{greet}, Richard</h5>
+            </div>
+            <div className='briefcase_div'>
+                <span>
+                    <FontAwesomeIcon icon={faBriefcase} className='icon briefcase' />
+                </span>
+                <span>
+                    <FontAwesomeIcon icon={faBell} className='icon bell' />
+                </span>
+            </div>
         </GreetMe>
     )
 }
@@ -28,16 +41,40 @@ const Greeting = () => {
 const GreetMe = styled.div`
 position: absolute;
 right: 20px;
-width: 300px;
-height: 60px;
+width: 400px;
+height: 40px;
 padding-left: 20px;
 background-color: #091a2b;
 color: white;
 border-radius: 40px;
-h5 {
-    font-weight: 700;
-}
-
+margin-bottom: 1% ;
+display: flex;
+    .greeting_div{
+        margin-top: -10px;
+        width: 80%;
+    }
+    h5 {
+        position: relative;
+        font-weight: 700;
+        width: 80%;
+    }
+    .briefcase_div{
+        display: inline;
+        position: relative;
+        width: 50%;
+        
+        .icon{
+            width: 14%;
+            margin-left: 5%;
+            margin-top: 7% ;
+        }
+        .bell{
+            width: 12%;
+        }
+        span + span {
+            margin-left: 15px;
+        }
+    }
 `
 
 export default Greeting
