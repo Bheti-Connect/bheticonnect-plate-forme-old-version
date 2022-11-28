@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Cover from '../../assets/images/background-First.png'
 import Logo from '../../assets/images/bheti-connect-logo.jpeg'
 import SubText from '../../components/SubText';
-
+import Greeting from '../../components/Greeting';
+import Footer from '../../components/Footer';
 
 const Accueil = () => {
     return (
@@ -17,7 +18,9 @@ const Accueil = () => {
             </div>
             <WelcomeStyled>Découvrez des opportunités d’investissements exclusives </WelcomeStyled>
             <SubText />
-            
+            <Greeting />
+            <Footer />
+
         </AccueilStyled>
     )
 }
@@ -36,8 +39,8 @@ const AccueilStyled = styled.section`
     position: absolute;
     width: 12%;
     .pp_logo{
-        width: 80%;
-        height: 125px;
+        width: 70%;
+        height: 130px;
         position: absolute;
         top: -10vh;
         left: 7vw;
@@ -48,11 +51,8 @@ const WelcomeStyled = styled.h2`
     position: absolute;
     margin-top: 100px;
     font-size: 40px ;
-    width: 80%;
+    width: 80vw;
     left: 7vw;
 `
-
-
-
 
 export default Accueil;

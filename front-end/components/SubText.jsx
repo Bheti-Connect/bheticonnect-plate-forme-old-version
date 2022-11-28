@@ -29,7 +29,6 @@ const TextContainerStyled = styled.div`
         font-size: 15px;
     }
 }
-    
 `
 
 export default SubText
