@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell } from '@fortawesome/free-solid-svg-icons';
-
+import { useEffect, useState } from 'react';
 
 
 const Greeting = () => {
+
+    const [name, setName] = useState('');
 
     const day = new Date();
     const hourNow = day.getHours();
@@ -21,10 +23,16 @@ const Greeting = () => {
         greet = " Bienvenue"
     }
 
+    useEffect(() => {
+        // Perform localStorage action
+        const data = JSON.parse(localStorage.getItem('user-info'));
+        setName(data?.name)
+      }, [])
+
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, Richard</h5>
+                <h5>{greet}, {name}</h5>
             </div>
             <div className='briefcase_div'>
                 <span>
