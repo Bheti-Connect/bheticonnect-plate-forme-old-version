@@ -2,8 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Logo from '../assets/images/bheti-connect-logo.jpeg'
-
+import {AccountBox} from './auth/accountBox';
 
 
 export default function Home() {
@@ -16,14 +15,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Image className={styles.logoImage} src={Logo} alt='Bheti Connect Logo' />
-        <h1 className={styles.title}>
-          Bienvenue sur <a href="https://nextjs.org">Bheti Connect App</a>
-        </h1>
-        <h3>La plate-forme des Entrepreneurs et Investisseurs en Afrique Francophone</h3>
-        <Link href='Investisseur/Accueil'>
-          <button className={styles.button_start}>Commencer votre experience</button>
-        </Link>
+        
+        <AccountBox />
       </main>
 
       <footer className={styles.footer}>

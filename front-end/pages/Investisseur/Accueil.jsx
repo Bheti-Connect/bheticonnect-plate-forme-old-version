@@ -35,12 +35,13 @@ const AccueilStyled = styled.section`
         height: 280px;
     }
 }
+
 .profil_div{
     position: absolute;
     width: 12%;
     .pp_logo{
-        width: 70%;
-        height: 130px;
+        width: 62%;
+        height: 125px;
         position: absolute;
         top: -10vh;
         left: 7vw;

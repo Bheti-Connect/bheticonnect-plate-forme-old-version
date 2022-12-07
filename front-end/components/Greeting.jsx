@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBriefcase, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -13,7 +13,7 @@ const Greeting = () => {
 
     if ((hourNow > 18) && (hourNow < 24)) {
         greet = "👍🏾 Bonsoir";
-    }   else if ((hourNow > 12) && (hourNow < 18))  {
+    }   else if ((hourNow > 12) && (hourNow < 18))  { 
         greet = "😏 Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
@@ -33,6 +33,9 @@ const Greeting = () => {
                 <span>
                     <FontAwesomeIcon icon={faBell} className='icon bell' />
                 </span>
+                <span>
+                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' />
+                </span>
             </div>
         </GreetMe>
     )
@@ -46,8 +49,9 @@ height: 40px;
 padding-left: 20px;
 background-color: #091a2b;
 color: white;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 border-radius: 40px;
-margin-bottom: 1% ;
+margin-bottom: 1%;
 display: flex;
     .greeting_div{
         margin-top: -10px;
@@ -66,13 +70,15 @@ display: flex;
         .icon{
             width: 14%;
             margin-left: 5%;
-            margin-top: 7% ;
+            margin-top: 7%;
+            cursor: pointer;
         }
         .bell{
             width: 12%;
         }
+        
         span + span {
-            margin-left: 15px;
+            margin-left: 13px;
         }
     }
 `
