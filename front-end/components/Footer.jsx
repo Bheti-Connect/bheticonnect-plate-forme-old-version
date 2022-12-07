@@ -47,7 +47,6 @@ const FooterStyled = styled.footer`
 }
 
 `
-
 const Lien = styled.a`
     display: block;
     margin-top: 6px;

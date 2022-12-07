@@ -2,9 +2,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+<<<<<<< HEAD
 import Logo from '../assets/images/bheti-connect-logo.jpeg'
 import { useEffect } from 'react'
 
+=======
+import {AccountBox} from './auth/accountBox';
+>>>>>>> e487cfed953a67e05717d82b0d3e3137bb09889c
 
 // var data = JSON.parse(localStorage.getItem('user-info'));
 
@@ -33,14 +37,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Image className={styles.logoImage} src={Logo} alt='Bheti Connect Logo' />
-        <h1 className={styles.title}>
-          Bienvenue sur <a href="https://nextjs.org">Bheti Connect App</a>
-        </h1>
-        <h3>La plate-forme des Entrepreneurs et Investisseurs en Afrique Francophone</h3>
-        <Link href='Investisseur/Accueil'>
-          <button className={styles.button_start}>Commencer votre experience</button>
-        </Link>
+        
+        <AccountBox />
       </main>
 
       <footer className={styles.footer}>
