@@ -2,12 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Logo from '../assets/images/bheti-connect-logo.jpeg'
-import { useEffect } from 'react'
-
-import {AccountBox} from './auth/accountBox';
-
-// var data = JSON.parse(localStorage.getItem('user-info'));
+import Connexion from './auth/Connexion'
 
 export default function Home() {
   useEffect(() => {
@@ -28,15 +23,18 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Accueil</title>
+        <title>Connexion</title>
         <meta name="description" content="Application created by Richard Nkulu" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
+        <Connexion />
         
-        <AccountBox />
       </main>
+      <Link href='Etape-Suivante/'>
+          <button>Change</button>
+        </Link>
 
       <footer className={styles.footer}>
         <a
