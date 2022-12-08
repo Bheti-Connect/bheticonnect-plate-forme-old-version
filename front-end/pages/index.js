@@ -15,7 +15,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <Connexion />
+        
       </main>
+      <Link href='Etape-Suivante/'>
+          <button>Change</button>
+        </Link>
 
       <footer className={styles.footer}>
         <a

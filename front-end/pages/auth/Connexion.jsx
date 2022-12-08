@@ -1,9 +1,9 @@
-    import React from "react";
+    import React, { useState } from "react";
     import * as Components from './Components';
     import  AutoGreet from '../../components/AutoGreet'
 
     function Connexion() {
-        const [signIn, toggle] = React.useState(true);
+        const [signIn, toggle] = useState(true);
         return(
             <Components.Container>
                 <Components.SignUpContainer signinIn={signIn}>
@@ -29,11 +29,10 @@
 
                 <Components.OverlayContainer signinIn={signIn}>
                     <Components.Overlay signinIn={signIn}>
-
                     <Components.LeftOverlayPanel signinIn={signIn}>
                         <Components.Title>Bon retour!</Components.Title>
                         <Components.Paragraph>
-                            Pour utiliser la plate-forme, veuillez vous connecter à l'aide vos identifiants.
+                            Déjà inscris sur la plate-forme? Veuillez vous connecter à l'aide vos identifiants.
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => toggle(true)}>
                             Connexion
