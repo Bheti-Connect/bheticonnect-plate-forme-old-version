@@ -33,50 +33,47 @@ export const LoginForm = () => {
   }
 
   useEffect(() => {
-      userRef.current.focus();
+    userRef.current.focus();
+    if (localStorage.getItem('user-info')) {
+    }
   }, [])
 
   useEffect(() => {
-      setErrMsg('');
+    setErrMsg('');
   }, [email, password])
 
-    const url = new URL(
-      "https://bheti-connect.smirltech.com/api/login"
+  const url = new URL(
+    "https://bheti-connect.smirltech.com/api/login"
   );
 
   const headers = {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
   };
 
-let item = { email, password }
+  let item = { email, password }
 
   const handleSubmit = async (e) => {
 
-    // try{
-
-    // } catch{
-
-    // } finally{
-
-    // }
-    e.preventDefault();
-
-    fetch(url, {
+    let result = await fetch(url, {
       method: "POST",
       headers,
       body: JSON.stringify(item),
-    }).then(response => response.json())
-    
+    }).then(response => response.json());
+    console.warn(email, password)
+    if (result.success) {
+      localStorage.setItem("user-info", JSON.stringify(result))
+    }
+
   }
 
   const { switchToSignup } = useContext(AccountContext);
 
   return (
-    <loginFormStyled>      
+    <loginFormStyled>
       <BoxContainer>
         <FormContainer >
-          <Input 
+          <Input
             type='email'
             name='email'
             placeholder="Email"
@@ -92,7 +89,7 @@ let item = { email, password }
             onChange={tacklePasswordChange}
             value={password}
             required
-            placeholder="Mot de passe" 
+            placeholder="Mot de passe"
           />
         </FormContainer>
         <Marginer direction="vertical" margin={10} />
@@ -101,7 +98,7 @@ let item = { email, password }
         <SubmitButton type="submit" onClick={handleSubmit}>Connexion</SubmitButton>
         <Marginer direction="vertical" margin="1em" />
         <MutedLink href="#">
-            Vous n'avez pas de compte?{" "}
+          Vous n'avez pas de compte?{" "}
           <BoldLink href="#" onClick={switchToSignup}>
             S'inscrire
           </BoldLink>

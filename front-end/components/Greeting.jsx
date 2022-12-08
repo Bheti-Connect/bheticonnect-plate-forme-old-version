@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-<<<<<<< HEAD
-import { faBriefcase, faBell } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
-=======
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 
->>>>>>> e487cfed953a67e05717d82b0d3e3137bb09889c
 
 
 const Greeting = () => {

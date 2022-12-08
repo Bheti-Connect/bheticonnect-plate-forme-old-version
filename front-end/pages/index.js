@@ -2,13 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-<<<<<<< HEAD
 import Logo from '../assets/images/bheti-connect-logo.jpeg'
 import { useEffect } from 'react'
 
-=======
 import {AccountBox} from './auth/accountBox';
->>>>>>> e487cfed953a67e05717d82b0d3e3137bb09889c
 
 // var data = JSON.parse(localStorage.getItem('user-info'));
 
@@ -24,7 +21,7 @@ export default function Home() {
       location.href = '/';
 
     } else if(!localStorage.getItem('user-info')) {
-      window.location.replace('http://localhost:3000/connexion')
+      // window.location.replace('http://localhost:3000/connexion')
       // redirect to login if not loggedin
     }
   }, [])
