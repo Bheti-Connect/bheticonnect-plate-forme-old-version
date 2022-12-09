@@ -37,7 +37,7 @@ transition: all 0.6s ease-in-out;
 left: 0;
 width: 50%;
 z-index: 2;
-${props => (props.moreInfo !== false ? `transform: translateX(100%);` : null)}
+${props => (props.moreInfo !== true ? `transform: translateX(100%);` : null)}
 `;
 
 export const Form = styled.form`
@@ -53,7 +53,7 @@ text-align: center;
 
 export const Title = styled.h1`
 font-weight: bold;
-margin: 0px;
+margin: 0;
 font-size: 30px;
 `;
 
@@ -85,7 +85,6 @@ export const Button = styled.button`
     &:focus {
         outline: none;
     }
-    
 `;
 
 export const GhostButton = styled(Button)`
@@ -126,7 +125,7 @@ height: 100%;
 width: 200%;
 transform: translateX(0);
 transition: transform 0.6s ease-in-out;
-${props => (props.moreInfo !== false ? `transform: translateX(50%);` : null)}
+${props => (props.moreInfo !== true ? `transform: translateX(50%);` : null)}
 `;
 
 export const OverlayPanel = styled.div`
@@ -152,11 +151,11 @@ export const LeftOverlayPanel = styled(OverlayPanel)`
 export const RightOverlayPanel = styled(OverlayPanel)`
     right: 0;
     transform: translateX(0);
-    ${props => props.moreInfo !== true ? `transform: translateX(20%);` : null}
+    ${props => props.moreInfo !== true ? `transform: translateX(50%);` : null}
 `;
 
 export const Paragraph = styled.p`
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;

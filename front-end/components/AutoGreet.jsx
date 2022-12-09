@@ -7,11 +7,11 @@ const AutoGreet = () => {
     let greet = ''
 
     if ((hourNow > 18) && (hourNow < 24)) {
-        greet = "👍🏾 Bonsoir";
+        greet = "🤗 Bonsoir";
     }   else if ((hourNow > 12) && (hourNow < 18))  { 
         greet = "😏 Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
-        greet = "🥳 Bonjour";
+        greet = "👋🏽 Bonjour";
     } else {
         greet = " Bienvenue"
     }
