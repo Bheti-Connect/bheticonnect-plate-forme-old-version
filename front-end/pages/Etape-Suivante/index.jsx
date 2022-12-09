@@ -1,50 +1,56 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import * as Components from './MoreInformation';
-import styles from '../../styles/Home.module.css'
+import Image from 'next/image';
+import styles from '../../styles/Home.module.css';
+import bhetiLogo from '../../assets/images/logoBackground.png'
+import styled from 'styled-components';
 
 const index = () => {
-    const [moreInfo, toggle] = useState(false);
-    console.log("Richard");
+    const [moreInfo, toggle] = useState(true);
+
     return (
         <div className={styles.main}>
             <Components.Container>
                 <Components.QuestionInfo moreInfo={moreInfo}>
-                <Components.Form>
-                <Components.Title>Vous êtes ?</Components.Title>
+                    <Components.Form>
+                    <Components.Title>ℹ️ Informations</Components.Title>
                         <Components.Paragraph>
-                            Choisissez une option parmi les deux qui se présente ci-dessous.
+                            Cher Investisseur, merci de compléter les informations supplémentaire sur vous et votre entreprise afin d'accéder à la plate-forme.
                         </Components.Paragraph>
-                        <Components.Button>Entrepreneur</Components.Button>
-
-                        <Components.Button onClick={() => toggle(true)}>Investisseur</Components.Button>
-
-                </Components.Form>
+                        <Components.Input type='text' placeholder='Votre fonction' />
+                        <Components.Input type='text' placeholder="Nom de votre fonds d'investissement" />
+                        <Components.Input type='text' placeholder='Website' />
+                    </Components.Form>
                 </Components.QuestionInfo>
 
                 <Components.OptionChoice moreInfo={moreInfo}>
                     <Components.Form>
-                        <Components.Title>informations</Components.Title>
-                        <Components.Paragraph>
-                            Merci de compléter les informations supplémentaire sur vous et votre entreprise afin d'accéder à la plate-forme.
-                        </Components.Paragraph>
-                        <Components.Input type='text' placeholder='Numéro Téléphone' />
-                        <Components.Input type='text' placeholder='Adresse' />
-                        <Components.Input type='text' placeholder='Nom de votre société' />
+                        
+
+                        <Components.Title>Vous êtes ?</Components.Title>
+                            <Components.Paragraph>
+                                Choisissez une option ci-dessous pour accédez  à la plate-forme.
+                            </Components.Paragraph>
+                            <Components.Button>Entrepreneur</Components.Button>
+                            <Components.Button onClick={() => toggle(false)}>Investisseur</Components.Button>
+                        
                     </Components.Form>
                 </Components.OptionChoice>
 
                 <Components.OverlayContainer moreInfo={moreInfo}>
                     <Components.Overlay moreInfo={moreInfo}>
                         <Components.LeftOverlayPanel moreInfo={moreInfo}>
-                            <Components.Title>BHETI CONNECT</Components.Title>
                             <Components.Paragraph>
-                                Pour utiliser la plate-forme
+                                    Si vous n'êtes pas investisseur retour au choix d'option.
                             </Components.Paragraph>
-                            
+                        <Components.GhostButton onClick={() => toggle(false)}>
+                                    Retour
+                                </Components.GhostButton> 
                         </Components.LeftOverlayPanel>
-
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
-
+                            <ImageDiv>
+                                <Image className='bheti_image' src={bhetiLogo} />
+                            </ImageDiv>
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
                 </Components.OverlayContainer>
@@ -53,5 +59,14 @@ const index = () => {
         
     )
 }
+
+const ImageDiv = styled.div`
+    position: absolute;
+    width: 55%;
+    .bheti_image{
+        width: 100%;
+        height: 100%;
+    }
+`;
 
 export default index;

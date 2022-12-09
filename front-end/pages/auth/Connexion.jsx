@@ -48,7 +48,6 @@
                                     Inscription
                                 </Components.GhostButton> 
                         </Components.RightOverlayPanel>
-    
                     </Components.Overlay>
                 </Components.OverlayContainer>
 
