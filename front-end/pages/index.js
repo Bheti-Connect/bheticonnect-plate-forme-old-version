@@ -3,21 +3,20 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Connexion from './auth/Connexion'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter();
   useEffect(() => {
-    let params = new URLSearchParams(window.location.search);
-    if(params.get('email')) {
-      let data = {
-        name: params.get('name'),
-        email: params.get('email')
+    let user = JSON.parse(localStorage.getItem("user-info"));
+    if(user) {
+      if(user.data.role == null) {
+        router.push('/Etape-Suivante')
       }
-      localStorage.setItem('user-info', JSON.stringify(data));
-      location.href = '/';
-
-    } else if(!localStorage.getItem('user-info')) {
-      // window.location.replace('http://localhost:3000/connexion')
-      // redirect to login if not loggedin
+      else if(user.data.role == 'investisseur') {
+        router.push('/Investisseur/Accueil');
+      }
     }
   }, [])
   return (

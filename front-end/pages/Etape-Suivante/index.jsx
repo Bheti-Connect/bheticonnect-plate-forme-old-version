@@ -9,16 +9,19 @@ const index = () => {
         <div className={styles.main}>
             <Components.Container>
                 <Components.QuestionInfo moreInfo={moreInfo}>
-                <Components.Form>
-                <Components.Title>Vous êtes ?</Components.Title>
+                    <Components.Form>
+                        <Components.Title>Vous êtes ?</Components.Title>
                         <Components.Paragraph>
                             Choisissez une option parmi les deux qui se présente ci-dessous.
                         </Components.Paragraph>
                         <Components.Button>Entrepreneur</Components.Button>
 
-                        <Components.Button onClick={() => toggle(true)}>Investisseur</Components.Button>
+                        <Components.Button onClick={(e) => {
+                            e.preventDefault();
+                            toggle(true)
+                        }}>Investisseur</Components.Button>
 
-                </Components.Form>
+                    </Components.Form>
                 </Components.QuestionInfo>
 
                 <Components.OptionChoice moreInfo={moreInfo}>
@@ -40,7 +43,7 @@ const index = () => {
                             <Components.Paragraph>
                                 Pour utiliser la plate-forme
                             </Components.Paragraph>
-                            
+
                         </Components.LeftOverlayPanel>
 
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
@@ -48,9 +51,9 @@ const index = () => {
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
                 </Components.OverlayContainer>
-        </Components.Container>
+            </Components.Container>
         </div>
-        
+
     )
 }
 
