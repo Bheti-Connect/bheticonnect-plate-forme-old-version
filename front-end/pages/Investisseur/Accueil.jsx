@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import Image from 'next/image';
 import Cover from '../../assets/images/background-First.png'
@@ -6,8 +6,16 @@ import Logo from '../../assets/images/bheti-connect-logo.jpeg'
 import SubText from '../../components/SubText';
 import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
+import { useRouter } from 'next/router';
 
 const Accueil = () => {
+    const router = useRouter();
+    useEffect(() => {
+        let user = JSON.parse(localStorage.getItem('user-info'));
+        if(!user) {
+            router.push('/');
+        }
+    })
     return (
         <AccueilStyled>
             <div className='image_div'>

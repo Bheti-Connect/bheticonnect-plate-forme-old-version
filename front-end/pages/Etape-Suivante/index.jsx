@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Components from './MoreInformation';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import bhetiLogo from '../../assets/images/logoBackground.png'
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const index = () => {
     const [moreInfo, toggle] = useState(true);
+
+    const router = useRouter();
+    useEffect(() => {
+        let user = JSON.parse(localStorage.getItem('user-info'));
+        if(!user) {
+            router.push('/');
+        }
+    })
 
     return (
         <div className={styles.main}>
@@ -32,7 +41,10 @@ const index = () => {
                                 Choisissez une option ci-dessous pour accédez  à la plate-forme.
                             </Components.Paragraph>
                             <Components.Button>Entrepreneur</Components.Button>
-                            <Components.Button onClick={() => toggle(false)}>Investisseur</Components.Button>
+                            <Components.Button onClick={(e) => {
+                                e.preventDefault();
+                                toggle(false);
+                            }}>Investisseur</Components.Button>
                         
                     </Components.Form>
                 </Components.OptionChoice>
@@ -43,13 +55,9 @@ const index = () => {
                             <Components.Paragraph>
                                     Si vous n'êtes pas investisseur retour au choix d'option.
                             </Components.Paragraph>
-<<<<<<< HEAD
-
-=======
                         <Components.GhostButton onClick={() => toggle(false)}>
                                     Retour
                                 </Components.GhostButton> 
->>>>>>> 0feb8fb93cab4729584e65c65ba7bcc35f531840
                         </Components.LeftOverlayPanel>
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
                             <ImageDiv>
