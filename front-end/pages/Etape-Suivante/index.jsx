@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const notify = () => {
     toast.success(
         <div>
-            <Components.Paragraph>Vous nous confirmez que vous êtes entrepreneur?</Components.Paragraph>
+            <Components.Paragraph>Vous nous confirmez que vous êtes entrepreneur ?</Components.Paragraph>
             <ButtonDiv>
                 <span>
                     <AlertButton className="button button-1" role="button">Oui</AlertButton>
@@ -22,7 +22,7 @@ const notify = () => {
             </ButtonDiv>
         </div>, {
             position: "top-center",
-            autoClose: 50000,
+            autoClose: 30000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -95,7 +95,7 @@ const index = () => {
                 </Components.OverlayContainer>
                 <ToastContainer
                     position="top-center"
-                    autoClose={50000}
+                    autoClose={30000}
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick
