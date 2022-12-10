@@ -66,6 +66,10 @@ width: 100%;
 `;
 
 
+{
+    
+}
+
 export const Button = styled.button`
     border-radius: 20px;
     border: 1px solid #A93226;
