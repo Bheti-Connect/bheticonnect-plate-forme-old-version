@@ -1,12 +1,48 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as Components from './MoreInformation';
+import styled from 'styled-components';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import bhetiLogo from '../../assets/images/logoBackground.png'
-import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const notify = () => {
+    toast.success(
+        <div>
+            <Components.Paragraph>Vous nous confirmez que vous êtes entrepreneur?</Components.Paragraph>
+            <ButtonDiv>
+                <span>
+                    <AlertButton className="button button-1" role="button">Oui</AlertButton>
+                </span>
+                <span>
+                    <AlertButton className="button button-2" role="button">Non</AlertButton>
+                </span>
+            </ButtonDiv>
+        </div>, {
+            position: "top-center",
+            autoClose: 50000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light"
+        }
+    )
+}
 
 const index = () => {
+    
     const [moreInfo, toggle] = useState(true);
+    const router = useRouter();
+    useEffect(() => {
+        let user = JSON.parse(localStorage.getItem('user-info'));
+        if(!user) {
+            router.push('/');
+        }
+    })
 
     return (
         <div className={styles.main}>
@@ -31,8 +67,11 @@ const index = () => {
                             <Components.Paragraph>
                                 Choisissez une option ci-dessous pour accédez  à la plate-forme.
                             </Components.Paragraph>
-                            <Components.Button>Entrepreneur</Components.Button>
-                            <Components.Button onClick={() => toggle(false)}>Investisseur</Components.Button>
+                            <Components.Button onClick={notify}>Entrepreneur</Components.Button>
+                            <Components.Button onClick={(e) => {
+                                e.preventDefault();
+                                toggle(false);
+                            }}>Investisseur</Components.Button>
                         
                     </Components.Form>
                 </Components.OptionChoice>
@@ -54,9 +93,20 @@ const index = () => {
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
                 </Components.OverlayContainer>
-        </Components.Container>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={50000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                />
+            </Components.Container>
         </div>
-        
     )
 }
 
@@ -69,4 +119,53 @@ const ImageDiv = styled.div`
     }
 `;
 
+const ButtonDiv = styled.div`
+    width: 90%;
+    margin: auto;
+    span + span {
+        margin-left: 100px;
+    }
+    .button-1{
+    background-color: #2ECC71 ;
+    }
+
+    .button-2{
+        background-color: #E74C3C;
+    }
+
+    .button-1:hover,
+    .button-1:focus {
+        background-color: #239B56;
+    }
+    .button-2:hover,
+    .button-2:focus {
+        background-color: #B03A2E;
+    }
+`
+
+const AlertButton = styled.button`
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+`
 export default index;
