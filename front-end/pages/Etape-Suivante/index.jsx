@@ -8,16 +8,40 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = () => {
+const notify = (e, router) => {
+    e.preventDefault();
+
+    let user = JSON.parse(localStorage.getItem('user-info'));
+
+    const entrepreneurSuccess = (e) => {
+        const process = async () => {
+            let response = await fetch(`https://bheti-connect.smirltech.com/api/users/${user.data.id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    role: 'entrepreneur'
+                })
+            });
+            let data = await response.json();
+            if(data.success) {
+                if(result.data.role == 'entrepreneur') {
+                    router.push('/Entrepreneur/Accueil');
+                }
+            }
+        }
+        process();
+    }
     toast.success(
         <div>
             <Components.Paragraph>Vous nous confirmez que vous êtes entrepreneur ?</Components.Paragraph>
             <ButtonDiv>
                 <span>
-                    <AlertButton className="button button-1" role="button">Oui</AlertButton>
+                    <AlertButton className="button button-1" role="button" onClick={entrepreneurSuccess}>Oui</AlertButton>
                 </span>
                 <span>
-                    <AlertButton className="button button-2" role="button">Non</AlertButton>
+                    <AlertButton className="button button-2" role="button" onClick={(e) => {
+                        e.preventDefault();
+                        toast.dismiss();
+                    }}>Non</AlertButton>
                 </span>
             </ButtonDiv>
         </div>, {
@@ -42,7 +66,7 @@ const index = () => {
         if(!user) {
             router.push('/');
         }
-    })
+    }, [])
 
     return (
         <div className={styles.main}>
@@ -67,7 +91,9 @@ const index = () => {
                             <Components.Paragraph>
                                 Choisissez une option ci-dessous pour accédez  à la plate-forme.
                             </Components.Paragraph>
-                            <Components.Button onClick={notify}>Entrepreneur</Components.Button>
+                            <Components.Button onClick={(e) => {
+                                notify(e, router);
+                            }}>Entrepreneur</Components.Button>
                             <Components.Button onClick={(e) => {
                                 e.preventDefault();
                                 toggle(false);
@@ -88,7 +114,7 @@ const index = () => {
                         </Components.LeftOverlayPanel>
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
                             <ImageDiv>
-                                <Image className='bheti_image' src={bhetiLogo} />
+                                <Image className='bheti_image' src={bhetiLogo} alt='logo_Bheti Connect' />
                             </ImageDiv>
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
@@ -153,7 +179,8 @@ const AlertButton = styled.button`
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    height: 30px;
+    height: 35px;
+    margin-bottom: 20px;
     line-height: 20px;
     list-style: none;
     margin: 0;
