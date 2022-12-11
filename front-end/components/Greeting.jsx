@@ -13,13 +13,13 @@ const Greeting = () => {
 
     // notification
     const [data, setData] = useState([
-    {"notification" : "Home", "time": "15/12/2022 à 12:32"},
-    {"notification" : "App Design", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Services", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pages", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Contact", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Feedback", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Cool", "time": "25/12/2025 à 12:32"},
+    {"notification" : "Pitch deck 1", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 2", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 3", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 4", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 5", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 6", "time": "15/12/2022 à 12:32"},
+    {"notification" : "Pitch deck 7", "time": "25/12/2025 à 12:32"},
 ])
 
 
@@ -33,7 +33,7 @@ const handle = (notif) => {
 
     if ((hourNow > 18) && (hourNow < 24)) {
         greet = "👍🏾 Bonsoir";
-    }   else if ((hourNow > 12) && (hourNow < 18))  { 
+    }   else if ((hourNow > 12) && (hourNow < 18))  {
         greet = "😏 Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
