@@ -144,7 +144,7 @@ display: flex;
             user-select: none;
         }
 
-        .first:hover > .notification_point {
+        .first > svg:hover ~ .notification_point {
             animation-name: bounce;
             animation-duration: 1s;
         }
