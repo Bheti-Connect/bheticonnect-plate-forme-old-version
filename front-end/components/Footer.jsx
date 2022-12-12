@@ -8,6 +8,12 @@ const Footer = () => {
                 <hr/>
             </div>
             <div className='container_div'>
+            <div className='first_div'>
+                    <h3>Ressources</h3>
+                    <Lien href='https://bheticonnect.com/'>✋🏾 Booster mes relations</Lien>
+                    <Lien>📸 Rencontrez des investisseurs</Lien>
+                    <Lien>📧 Mon Pitch Deck</Lien>
+                </div>
                 <div className='first_div'>
                     <h3>Bheti Connect</h3>
                     <Lien href='https://bheticonnect.com/'>✋🏾 Qui sommes nous</Lien>
