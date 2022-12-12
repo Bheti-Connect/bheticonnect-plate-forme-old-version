@@ -14,16 +14,21 @@ const notify = (e, router) => {
     let user = JSON.parse(localStorage.getItem('user-info'));
 
     const entrepreneurSuccess = (e) => {
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
         const process = async () => {
             let response = await fetch(`https://bheti-connect.smirltech.com/api/users/${user.data.id}`, {
                 method: 'PUT',
+                headers,
                 body: JSON.stringify({
                     role: 'entrepreneur'
                 })
             });
             let data = await response.json();
-            if(data.success) {
-                if(result.data.role == 'entrepreneur') {
+            if(data.data) {
+                if(data.data.role == 'entrepreneur') {
                     router.push('/Entrepreneur/Accueil');
                 }
             }
@@ -114,7 +119,7 @@ const index = () => {
                         </Components.LeftOverlayPanel>
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
                             <ImageDiv>
-                                <Image className='bheti_image' src={bhetiLogo} alt='logo_Bheti Connect' />
+                                <Image className='bheti_image' src={bhetiLogo} />
                             </ImageDiv>
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
@@ -154,11 +159,9 @@ const ButtonDiv = styled.div`
     .button-1{
     background-color: #2ECC71 ;
     }
-
     .button-2{
         background-color: #E74C3C;
     }
-
     .button-1:hover,
     .button-1:focus {
         background-color: #239B56;
@@ -179,8 +182,7 @@ const AlertButton = styled.button`
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    height: 35px;
-    margin-bottom: 20px;
+    height: 30px;
     line-height: 20px;
     list-style: none;
     margin: 0;
