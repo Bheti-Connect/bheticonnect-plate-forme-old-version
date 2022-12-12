@@ -14,16 +14,21 @@ const notify = (e, router) => {
     let user = JSON.parse(localStorage.getItem('user-info'));
 
     const entrepreneurSuccess = (e) => {
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
         const process = async () => {
             let response = await fetch(`https://bheti-connect.smirltech.com/api/users/${user.data.id}`, {
                 method: 'PUT',
+                headers,
                 body: JSON.stringify({
                     role: 'entrepreneur'
                 })
             });
             let data = await response.json();
-            if(data.success) {
-                if(result.data.role == 'entrepreneur') {
+            if(data.data) {
+                if(data.data.role == 'entrepreneur') {
                     router.push('/Entrepreneur/Accueil');
                 }
             }
