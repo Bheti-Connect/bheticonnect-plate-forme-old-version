@@ -75,6 +75,7 @@ const handle = (notif) => {
                             <li key={index} onClick={() => handle(item)}><a href='#' >{item.notification}</a> <span>{item.time}</span></li>
                         ))
                         }
+                        <li className='view_all'><span>Toutes les notifications</span></li>
                     </ul>
 
                 </span>
@@ -214,7 +215,7 @@ display: flex;
             }
 
 
-            ul li{
+            .menu li{
             display: flex;
             line-height: 20px;
             padding: 8px 20px;
@@ -228,15 +229,31 @@ display: flex;
             }
             }
 
-            ul li a{
+            .menu li a{
             color: white;
             text-decoration: none;
             font-size: 14px;
             margin-left: -18px;
             }
 
-            ul li a:hover , ul li label:hover{
+            .menu li a:hover , .menu li label:hover{
             color: cyan;
+            }
+
+            .view_all span{
+                width: 100%;
+                margin:auto;
+                font-size: 15px !important;
+                color : white;
+                text-align: center;
+                margin-left: -20px;
+                padding: 5px;
+                font-weight: 700;
+                border-top: 1px gray solid;
+
+                &:hover{
+                    color: cyan;
+                }
             }
         }
 
