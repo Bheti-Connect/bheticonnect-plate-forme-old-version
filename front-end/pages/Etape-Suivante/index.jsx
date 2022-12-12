@@ -90,6 +90,8 @@ const index = () => {
 
                 <Components.OptionChoice moreInfo={moreInfo}>
                     <Components.Form>
+                        
+
                         <Components.Title>Vous êtes ?</Components.Title>
                             <Components.Paragraph>
                                 Choisissez une option ci-dessous pour accédez  à la plate-forme.
@@ -101,6 +103,7 @@ const index = () => {
                                 e.preventDefault();
                                 toggle(false);
                             }}>Investisseur</Components.Button>
+                        
                     </Components.Form>
                 </Components.OptionChoice>
 
