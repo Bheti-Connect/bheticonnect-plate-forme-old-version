@@ -159,11 +159,9 @@ const ButtonDiv = styled.div`
     .button-1{
     background-color: #2ECC71 ;
     }
-
     .button-2{
         background-color: #E74C3C;
     }
-
     .button-1:hover,
     .button-1:focus {
         background-color: #239B56;
