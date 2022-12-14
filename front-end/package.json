@@ -9,8 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/node": "18.7.14",
+    "@types/react": "^18.0.18",
+    "@types/styled-components": "5.1.26",
+    "axios": "^1.2.1",
+    "babel-plugin-styled-components": "^2.0.7",
+    "framer-motion": "^7.6.19",
     "next": "13.0.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-content-loader": "^6.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "react-paginate": "^8.1.4",
+    "react-router-dom": "^6.4.5",
+    "react-select": "^5.7.0",
+    "react-toastify": "^9.1.1",
+    "styled-components": "^5.3.6"
   }
 }
