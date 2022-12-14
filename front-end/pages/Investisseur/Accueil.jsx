@@ -6,6 +6,7 @@ import Logo from '../../assets/images/bheti-connect-logo.jpeg'
 import SubText from '../../components/SubText';
 import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
+import AllCards from '../../components/cards/AllCards';
 
 const Accueil = () => {
     return (
@@ -18,6 +19,9 @@ const Accueil = () => {
             </div>
             <Components.WelcomeStyled>Découvrez des opportunités d’investissements exclusives </Components.WelcomeStyled>
             <SubText />
+
+            <AllCards/>
+            
             <Greeting />
             <Footer />
         </Components.AccueilStyled>

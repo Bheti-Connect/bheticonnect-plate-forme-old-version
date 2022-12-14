@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useTheme } from '../../context/themecontext';
 import { GrAppsRounded } from "react-icons/gr";
 import ReactPaginate from 'react-paginate';
 import SearchFilter from './../SearchFilter/SearchFilter';
@@ -8,6 +7,7 @@ import Cards from './Cards';
 import CardsModal from './CardsModal';
 import LoaderCards from './LoaderCards';
 import axios from 'axios';
+import { useTheme } from '../../context/themecontext';
 
 const AllCards = () => {
     // useState of pagination
