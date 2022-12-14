@@ -41,6 +41,8 @@ function Connexion() {
                 router.push('/Etape-Suivante')
             } else if (result.data.role == 'investisseur') {
                 router.push('/Investisseur/Accueil');
+            } else if (result.data.role == 'entrepreneur') {
+                router.push('/Entrepreneur/Accueil');
             }
         }
     }
@@ -81,6 +83,7 @@ function Connexion() {
             </Components.SignUpContainer>
 
             <Components.SignInContainer signinIn={signIn}>
+                <a href="https://bheti-connect.smirltech.com/login/linkedin">Linkedin</a>
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
