@@ -84,9 +84,7 @@ let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/2
 
                 <div className='deck'>
 
-                {
-                  connect ? (<Link to={'/forminvestisseur'} className='Btn-deck'>Récevoir le deck</Link>) : (<Link to={'/connexion'} className='Btn-deck'>Récevoir le deck</Link>)
-                }
+                <Link to={'#'} className='Btn-deck'>Récevoir le deck</Link>
                 
                 </div>
 

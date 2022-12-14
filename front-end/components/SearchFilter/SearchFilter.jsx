@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {GoSearch} from 'react-icons/go';
 import { useTheme } from '../../context/themeContext';
@@ -12,13 +12,13 @@ const options = [
 { value: 'Ancien', label: 'Ancien' },
   ]
 
-  const valueSearch = useRef(null);
+  //const valueSearch = useRef(null);
   const theme = useTheme();
 
   // Handle query
   const handleQuery = (e) => {
     e.preventDefault();
-    setQuery(valueSearch.current.value)
+    setQuery(e)
   }
   // Handle trie
   const handleChange = (selectedOption) => {
@@ -34,7 +34,7 @@ const options = [
       <ContainerSearch theme={theme}>
         <form onSubmit={handleQuery}>
           <button type='submit' className="btn-search"><GoSearch /></button>
-          <input ref={valueSearch} type="text" className="input-search" placeholder="Recherche..."></input>
+          <input type="text" className="input-search" placeholder="Recherche..."></input>
         </form>
       </ContainerSearch>
 
