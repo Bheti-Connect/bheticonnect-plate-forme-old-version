@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from '../../context/themecontext';
+import { Link } from 'react-router-dom';
+import { closeModal } from '../../utils/FunctionsComponent';
 
-const CardsModal = ({select, setModal, connect}) => {
+const CardsModal = ({select, setModal}) => {
 
     const theme = useTheme();
 
@@ -9,36 +15,6 @@ let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency
 
 // Generate image
 let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
-
-
-const handleFlouter = () => {
-  let  flouter = document.querySelectorAll(".cible-flouter")
-
-  if(connect == false){
-    
-    for(var i = 0; i < flouter.length; i++)
-    {
-      if(!flouter[i].classList.contains("flouter"))
-      {
-        flouter[i].classList.add("flouter")
-      }
-    }
-
-  }else{
-
-    for(var i = 0; i < flouter.length; i++)
-    {
-      flouter[i].classList.remove("flouter")
-    }
-
-  }
-
-}
-
-// flouter text
-useEffect(() => {
-  handleFlouter()
-}, [connect])
 
 
   return (
@@ -66,44 +42,44 @@ useEffect(() => {
 
                   <div className='detail'>
                     <h3>Projet {select.nom}</h3>
-                    <p className='cible-flouter flouter'>{select.description}</p>
+                    <p className='cible-flouter'>{select.description}</p>
                   </div>
                 </div>
 
                 {/* Pourquoi maintenant ?  */}
                 <div className='item-detail'>
                   <h3>✅ Pourquoi maintenant ?</h3>
-                  <p className='cible-flouter flouter'>{select.description ? (select.description) : ("")}</p>
+                  <p className='cible-flouter'>{select.description ? (select.description) : ("")}</p>
                 </div>
 
                 {/* Problèmes  */}
                 <div className='item-detail'>
                   <h3>🚨 Problèmes</h3>
-                  <p className='cible-flouter flouter'>{select.problemes ? (select.problemes) : ("")}</p>
+                  <p className='cible-flouter'>{select.problemes ? (select.problemes) : ("")}</p>
                 </div>
 
                 {/* Solutions  */}
                 <div className='item-detail'>
                   <h3>☝ Solutions</h3>
-                  <p className='cible-flouter flouter'>{select.solutions ? (select.solutions) : ("")}</p>
+                  <p className='cible-flouter'>{select.solutions ? (select.solutions) : ("")}</p>
                 </div>
 
                 {/* Equipe  */}
                 <div className='item-detail'>
                   <h3>👬 Equipe</h3>
-                  <p className='cible-flouter flouter'>{select.equipe ? (select.equipe) : ("")}</p>
+                  <p className='cible-flouter'>{select.equipe ? (select.equipe) : ("")}</p>
                 </div>
 
                 {/* Business Modal  */}
                 <div className='item-detail'>
                   <h3>💰 Business Modal</h3>
-                  <p className='cible-flouter flouter'>{select.business_model ? (select.business_model) : ("")}</p>
+                  <p className='cible-flouter'>{select.business_model ? (select.business_model) : ("")}</p>
                 </div>
 
                 {/* KPI  */}
                 <div className='item-detail'>
                   <h3>📊 KPI</h3>
-                  <p className='cible-flouter flouter'>{select.kpi ? (select.kpi) : ("")}</p>
+                  <p className='cible-flouter'>{select.kpi ? (select.kpi) : ("")}</p>
                 </div>
 
                 <div className='deck'>

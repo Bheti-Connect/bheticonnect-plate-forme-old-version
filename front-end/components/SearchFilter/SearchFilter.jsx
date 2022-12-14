@@ -1,4 +1,8 @@
-import React from 'react'
+import React, {useRef} from 'react';
+import styled from 'styled-components';
+import {GoSearch} from 'react-icons/go';
+import { useTheme } from '../../context/themeContext';
+import Select from 'react-select';
 
 const SearchFilter = ({setQuery, setTrie}) => {
 

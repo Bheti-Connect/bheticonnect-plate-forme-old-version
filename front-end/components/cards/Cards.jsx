@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
+import axios from 'axios';
+import { handleSelect } from '../../utils/FunctionsComponent';
 
 const Cards = ({item, setSelect, setModal}) => {
 
