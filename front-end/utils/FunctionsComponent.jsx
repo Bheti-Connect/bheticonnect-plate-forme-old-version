@@ -16,3 +16,5 @@ export const handleSelect = (setSelect, setModal, item) => {
     setSelect(item)
     setModal(true)
 }
+
+

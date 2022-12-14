@@ -19,10 +19,10 @@ const Accueil = () => {
             </div>
             <Components.WelcomeStyled>Découvrez des opportunités d’investissements exclusives </Components.WelcomeStyled>
             <SubText />
-
+            <Greeting />
+            
             <AllCards/>
             
-            <Greeting />
             <Footer />
         </Components.AccueilStyled>
     )

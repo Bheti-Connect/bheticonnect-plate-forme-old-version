@@ -31,7 +31,7 @@ const Footer = () => {
 }
 
 const FooterStyled = styled.footer`
-    position: absolute;
+    
     bottom: 40px;
     left: 7vw;
 

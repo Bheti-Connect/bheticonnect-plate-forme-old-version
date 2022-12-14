@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
 import { handleSelect } from '../../utils/FunctionsComponent';
+import { useTheme } from '../../context/themeContext';
 
 const Cards = ({item, setSelect, setModal}) => {
 
 
-const theme = useTheme()
+  const theme = useTheme()
+
   const [imgProject, setImgProject] = useState(null)
 
   // Format currency Euro

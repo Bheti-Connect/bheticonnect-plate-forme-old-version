@@ -338,6 +338,7 @@ const AllCards = () => {
 
 const InvestisseurStyled = styled.section`
 
+
 /*background : no-repeat center/80% url("../../assets/icons/icon_bheti_design.png") ;*/
 
 
@@ -388,12 +389,12 @@ const Projects = styled.div`
   }
 
   a{
-    color:white;
+    color:${props => props.theme.colorBheti};
   }
 }
 
 .previousLinkClassName{
-  color: ${props => props.theme.colorBheti};
+  color: ${props => props.theme.colorBheti} ;
   padding: 5px;
   font-family: sans-serif;
   border-radius: 5px;
@@ -406,7 +407,7 @@ const Projects = styled.div`
 }
 
 .nextLinkClassName{
-  color: ${props => props.theme.colorBheti};
+  color: ${props => props.theme.colorBheti} !important;
   padding: 5px;
   font-family: sans-serif;
   border-radius: 5px;
@@ -421,7 +422,7 @@ const Projects = styled.div`
 
 .activeClassName{
   background-color: ${props => props.theme.colorBheti};
-  color: white;
+  color: red;
   border-radius: 50px;
 }
 
