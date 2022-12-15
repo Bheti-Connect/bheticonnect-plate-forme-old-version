@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const AccueilStyled = styled.section`
 
+
 .image_div {
     position: relative;
     width: 100%;
@@ -29,7 +30,7 @@ export const AccueilStyled = styled.section`
 }
 `
 export const WelcomeStyled = styled.h2`
-    position: absolute;
+    /*position: absolute;*/
     margin-top: 100px;
     font-size: 40px ;
     width: 80vw;

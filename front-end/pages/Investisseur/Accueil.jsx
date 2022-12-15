@@ -8,6 +8,7 @@ import SubText from '../../components/SubText';
 import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
+import AllCards from '../../components/cards/AllCards';
 
 const Accueil = () => {
     const router = useRouter();
@@ -28,6 +29,9 @@ const Accueil = () => {
             <Components.WelcomeStyled>Découvrez des opportunités d’investissements exclusives </Components.WelcomeStyled>
             <SubText />
             <Greeting />
+            
+            <AllCards/>
+            
             <Footer />
         </Components.AccueilStyled>
     )
