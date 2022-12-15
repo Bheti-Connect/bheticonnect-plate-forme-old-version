@@ -6,8 +6,8 @@ import SearchFilter from './../SearchFilter/SearchFilter';
 import Cards from './Cards';
 import CardsModal from './CardsModal';
 import LoaderCards from './LoaderCards';
-import axios from 'axios';
 import { useTheme } from '../../context/themecontext';
+import { fetch_get, fetch_post } from '../../utils/FunctionsComponent';
 
 const AllCards = () => {
     // useState of pagination
@@ -46,45 +46,34 @@ const AllCards = () => {
   
       // GET data from API
       const getData = () => {
-
-
         let source = "https://bheti-connect.smirltech.com/api/projets";
-
-        fetch(source, {
-              method: 'GET',
-              headers:{
-                  'Content-Type':'application/json'
-              }}).then((resp) => {resp.json()}).then((result) => {
-                handleSetData(result)
-              }).catch((error) => {
-                console.log(error);
-              })
-
+      
+        let result = fetch_get(source)
+        console.log(result);
+        //handleSetData(result)
       }
   
   
       // Change Section of data : Tous, PME ou STARTUP
-      const changeSectionMenu = (position) => {
+      const changeSectionMenu = async (position) => {
         let source = "https://bheti-connect.smirltech.com/api/projets/search";
   
         if (position == "pme")
         {
           let pmeFilter = {filters: [{field: 'company_type', value: 'pme'}]}
-  
-          axios.post(source, pmeFilter).then(res => {
-            handleSetData(res.data)
-          }).catch((error) => console.log(error))
+          let result = fetch_post(source, pmeFilter)
+          handleSetData(result)
   
           setPaginationSelect("pme")
   
         }else if(position == "startup")
         {
           let startupFilter = {filters: [{field: 'company_type', value: 'startup'}]}
-  
-          axios.post(source, startupFilter).then(res => {
-            handleSetData(res.data)
-          }).catch((error) => console.log(error))
+          let result = fetch_post(source, startupFilter)
+          handleSetData(result)
+
           setPaginationSelect("startup")
+
         }else{
           getData()
           setPaginationSelect("tous")
@@ -117,11 +106,10 @@ const AllCards = () => {
       // Get research
       if (query)
       {
-        axios.post(source, toSend).then((resp) =>{
-          handleSetData(resp.data)
-        }).catch((error) => {
-          console.log(error);
-        })
+
+        let result = fetch_post(source, toSend)
+        handleSetData(result)
+
         setPaginationSelect("query")
       }
     }
@@ -155,9 +143,9 @@ const AllCards = () => {
 
       if (toSend)
       {
-        axios.post(source, toSend).then(res => {
-          handleSetData(res.data)
-        }).catch(error => console.log(error))
+        let result = fetch_post(source, toSend)
+        handleSetData(result)
+
         setPaginationSelect("trieData")
       }
     }
@@ -219,16 +207,12 @@ const AllCards = () => {
       // get Add for another page
      if (request)
       {
-        axios.post(source, request).then((resp) =>{
-          handleSetData(resp.data)
-        }).catch((error) => {
-          console.log(error);
-        })
+        let result = fetch_post(source, request)
+        handleSetData(result)
       }
       else{
-        axios.get(source).then(res => {
-          handleSetData(res.data)
-        }).catch(error => console.log(error))
+        let result = fetch_get(source)
+        handleSetData(result)
       }
     }
 

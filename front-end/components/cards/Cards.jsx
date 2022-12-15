@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import axios from 'axios';
 import { handleSelect } from '../../utils/FunctionsComponent';
 import { useTheme } from '../../context/themeContext';
+import { fetch_get } from '../../utils/FunctionsComponent';
 
 const Cards = ({item, setSelect, setModal}) => {
 
@@ -17,11 +17,15 @@ const Cards = ({item, setSelect, setModal}) => {
   // Generate image
   const handleImage = () => {
     let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
-    axios.get(source).then((res) => {
+
+    let result = fetch_get(source)
+    
+    if(result){
       setImgProject(source)
-    }).catch((error) => {
+    }else{
       setImgProject("https://picsum.photos/id/10/200/300")
-    })
+    }
+
   }
 
   useEffect(() => {

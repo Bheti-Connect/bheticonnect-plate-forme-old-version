@@ -18,3 +18,42 @@ export const handleSelect = (setSelect, setModal, item) => {
 }
 
 
+// Fetch POST 
+ export const fetch_post = async (url, body_data) => {
+    let resp = await fetch(url, {
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:body_data
+      })
+
+      let result = await resp.json()
+
+      if (resp.status == 200){
+        return result;
+      }else{
+        console.log(resp);
+        //return "error_post_fecth"
+      }
+ }
+
+ // Fetch GET
+ export const fetch_get = (url) => {
+    fetch(url, {
+    method: 'GET',
+    headers:{
+        
+        'Content-Type':'application/json'
+    }
+    }).then((res) => {res.json()}).then((result) => {
+
+    return result;
+
+    }).catch((error) => {
+
+    console.log(error);
+
+    })
+ }
+
