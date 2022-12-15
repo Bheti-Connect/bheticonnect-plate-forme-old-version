@@ -18,18 +18,16 @@ function Connexion() {
         setPassword(e.target.value)
     }
 
-    let url = new URL(
-        "https://bheti-connect.smirltech.com/api/login"
-    );
-
-    const headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-    };
-
     let credentials = { email, password }
 
     const HandleLogin = async (e) => {
+        const url = new URL(
+            "https://bheti-connect.smirltech.com/api/login"
+        );
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
         e.preventDefault();
         let result = await fetch(url, {
             method: "POST",
@@ -39,21 +37,26 @@ function Connexion() {
         console.warn(email, password)
         if (result.success) {
             localStorage.setItem("user-info", JSON.stringify(result));
-            if(result.data.role == null) {
+            if (result.data.role == null) {
                 router.push('/Etape-Suivante')
-            } else if(result.data.role == 'investisseur') {
+            } else if (result.data.role == 'investisseur') {
                 router.push('/Investisseur/Accueil');
+            } else if (result.data.role == 'entrepreneur') {
+                router.push('/Entrepreneur/Accueil');
             }
         }
     }
 
     let signup_data = { name, email, password, confirmPass };
 
-    url = new URL(
-        "https://bheti-connect.smirltech.com/api/register"
-    );
-
     const HandleSignUp = async (e) => {
+        const url = new URL(
+            "https://bheti-connect.smirltech.com/api/register"
+        );
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
         e.preventDefault();
         let result = await fetch(url, {
             method: "POST",
@@ -80,6 +83,9 @@ function Connexion() {
             </Components.SignUpContainer>
 
             <Components.SignInContainer signinIn={signIn}>
+                <a href="https://bheti-connect.smirltech.com/login/linkedin">
+                    linkedin
+                </a>
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />

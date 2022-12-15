@@ -112,6 +112,11 @@ ${props =>
     props.signinIn !== true ? `transform: translateX(-100%);` : null}
 `;
 
+export const LinkedinButton = styled.button`
+    color: ;
+
+`
+
 export const Overlay = styled.div`
 background: #ff416c;
 background: -webkit-linear-gradient(to right, #B03A2E, #700000);
