@@ -46,10 +46,20 @@ const AllCards = () => {
   
       // GET data from API
       const getData = () => {
+
+
         let source = "https://bheti-connect.smirltech.com/api/projets";
-        axios.get(source).then(res => {
-          handleSetData(res.data)
-        }).catch((error) => console.log(error))
+
+        fetch(source, {
+              method: 'GET',
+              headers:{
+                  'Content-Type':'application/json'
+              }}).then((resp) => {resp.json()}).then((result) => {
+                handleSetData(result)
+              }).catch((error) => {
+                console.log(error);
+              })
+
       }
   
   
