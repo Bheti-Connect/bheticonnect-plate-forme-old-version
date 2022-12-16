@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import * as Components from './Components';
 import AutoGreet from '../../components/AutoGreet'
 import { useRouter } from 'next/router'
@@ -9,6 +9,8 @@ function Connexion() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
+    const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState('');
     const router = useRouter()
 
     const tackleEmailChange = (e) => {
@@ -21,6 +23,9 @@ function Connexion() {
     let credentials = { email, password }
 
     const HandleLogin = async (e) => {
+        e.preventDefault();
+        setMessage('');
+        setErrors({});
         const url = new URL(
             "https://bheti-connect.smirltech.com/api/login"
         );
@@ -28,7 +33,6 @@ function Connexion() {
             "Content-Type": "application/json",
             "Accept": "application/json",
         };
-        e.preventDefault();
         let result = await fetch(url, {
             method: "POST",
             headers,
@@ -44,12 +48,48 @@ function Connexion() {
             } else if (result.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
             }
+        } else {
+            setErrors(result.errors ? result.errors : {});
+            if(!result.errors) {
+                setMessage(result.message);
+            }
         }
     }
 
     let signup_data = { name, email, password, confirmPass };
 
     const HandleSignUp = async (e) => {
+        e.preventDefault();
+        setMessage('');
+        setErrors({
+            name: ''
+        });
+        if(name == '') {
+            let err = {
+                ...errors,
+                name: 'The name field is required',
+            }
+            setErrors(err);
+            return;
+        }
+        var regex = /^(?=.{8,})(?=.*[A-Z])(?=.*[@#$%^&+*!=]).*$/;
+        if(!regex.test(password)) {
+            let err = {
+                ...errors,
+                password: 'Password must contain minimum eight characters, at least one uppercase letter and one number'
+            }
+            setErrors(err);
+            return;
+        }
+        if(password != confirmPass) {
+            let err = {
+                ...errors,
+                password: 'Password does not matches with the confirm password'
+            }
+            setErrors(err);
+            return;
+        }
+
         const url = new URL(
             "https://bheti-connect.smirltech.com/api/register"
         );
@@ -57,7 +97,6 @@ function Connexion() {
             "Content-Type": "application/json",
             "Accept": "application/json",
         };
-        e.preventDefault();
         let result = await fetch(url, {
             method: "POST",
             headers,
@@ -66,6 +105,8 @@ function Connexion() {
         if (result.success) {
             localStorage.setItem("user-info", JSON.stringify(result));
             router.push('/Etape-Suivante')
+        } else {
+            setErrors(result.errors ? result.errors : {});
         }
     }
 
@@ -75,8 +116,11 @@ function Connexion() {
                 <Components.Form>
                     <Components.Title>Créer un Compte</Components.Title>
                     <Components.Input type='text' placeholder='Nom Complet' value={name} onChange={(e) => setName(e.target.value)} />
+                    <div style={{color: 'red'}}>{errors?.name}</div>
                     <Components.Input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <div style={{color: 'red'}}>{errors?.email}</div>
                     <Components.Input type='password' placeholder='Mot de Passe' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <div style={{color: 'red'}}>{errors?.password}</div>
                     <Components.Input type='password' placeholder='Confirmez le mot de passe' value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
                     <Components.Button type="submit" onClick={HandleSignUp}>Je m'inscris</Components.Button>
                 </Components.Form>
@@ -87,8 +131,11 @@ function Connexion() {
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
+                    <div style={{color: 'red'}}>{errors?.email}</div>
                     <Components.Input type='password' onChange={tacklePasswordChange} placeholder='Mot de Passe' />
+                    <div style={{color: 'red'}}>{errors?.password}</div>
                     <Components.Anchor href='#'>J'ai oublié le mot de passe !</Components.Anchor>
+                    <div style={{color: 'red'}}>{message}</div>
                     <Components.Button type="submit" onClick={HandleLogin}>Connexion</Components.Button>
                 </Components.Form>
             </Components.SignInContainer>
@@ -101,6 +148,8 @@ function Connexion() {
                             Déjà inscris sur la plate-forme? Veuillez vous connecter à l'aide vos identifiants.
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
+                            setMessage('');
+                            setErrors({});
                             setEmail('');
                             setPassword('');
                             toggle(true);
@@ -115,6 +164,8 @@ function Connexion() {
                             Inscrivez-vous et commencez votre expérience avec nous
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
+                            setMessage('');
+                            setErrors({});
                             setEmail('');
                             setPassword('');
                             toggle(false);
