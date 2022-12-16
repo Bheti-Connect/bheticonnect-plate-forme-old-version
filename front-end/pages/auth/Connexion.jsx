@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useCallback, useEffect, useState } from "react";
 import * as Components from './Components';
 import AutoGreet from '../../components/AutoGreet'
 import { useRouter } from 'next/router'
@@ -25,7 +25,25 @@ function Connexion() {
     const HandleLogin = async (e) => {
         e.preventDefault();
         setMessage('');
-        setErrors({});
+        setErrors(null);
+        let err = {};
+        if (email == '') {
+            err = {
+                ...err,
+                email: 'The email field is required',
+            }
+            setErrors(err);
+            return;
+        }
+
+        if (password == '') {
+            err = {
+                ...err,
+                password: 'The password field is required',
+            }
+            setErrors(err);
+            return;
+        }
         const url = new URL(
             "https://bheti-connect.smirltech.com/api/login"
         );
@@ -50,7 +68,7 @@ function Connexion() {
             }
         } else {
             setErrors(result.errors ? result.errors : {});
-            if(!result.errors) {
+            if (!result.errors) {
                 setMessage(result.message);
             }
         }
@@ -61,29 +79,45 @@ function Connexion() {
     const HandleSignUp = async (e) => {
         e.preventDefault();
         setMessage('');
-        setErrors({
-            name: ''
-        });
-        if(name == '') {
-            let err = {
-                ...errors,
+        setErrors(null);
+        let err = {};
+        if (name == '') {
+            err = {
+                ...err,
                 name: 'The name field is required',
             }
             setErrors(err);
             return;
         }
+        if (email == '') {
+            err = {
+                ...err,
+                email: 'The email field is required',
+            }
+            setErrors(err);
+            return;
+        }
+
+        if (password == '') {
+            err = {
+                ...err,
+                password: 'The password field is required',
+            }
+            setErrors(err);
+            return;
+        }
         var regex = /^(?=.{8,})(?=.*[A-Z])(?=.*[@#$%^&+*!=]).*$/;
-        if(!regex.test(password)) {
-            let err = {
-                ...errors,
+        if (!regex.test(password)) {
+            err = {
+                ...err,
                 password: 'Password must contain minimum eight characters, at least one uppercase letter and one number'
             }
             setErrors(err);
             return;
         }
-        if(password != confirmPass) {
-            let err = {
-                ...errors,
+        if (password != confirmPass) {
+            err = {
+                ...err,
                 password: 'Password does not matches with the confirm password'
             }
             setErrors(err);
@@ -97,6 +131,7 @@ function Connexion() {
             "Content-Type": "application/json",
             "Accept": "application/json",
         };
+
         let result = await fetch(url, {
             method: "POST",
             headers,
@@ -116,11 +151,11 @@ function Connexion() {
                 <Components.Form>
                     <Components.Title>Créer un Compte</Components.Title>
                     <Components.Input type='text' placeholder='Nom Complet' value={name} onChange={(e) => setName(e.target.value)} />
-                    <div style={{color: 'red'}}>{errors?.name}</div>
+                    <div style={{ color: 'red' }}>{errors?.name}</div>
                     <Components.Input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <div style={{color: 'red'}}>{errors?.email}</div>
+                    <div style={{ color: 'red' }}>{errors?.email}</div>
                     <Components.Input type='password' placeholder='Mot de Passe' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <div style={{color: 'red'}}>{errors?.password}</div>
+                    <div style={{ color: 'red' }}>{errors?.password}</div>
                     <Components.Input type='password' placeholder='Confirmez le mot de passe' value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
                     <Components.Button type="submit" onClick={HandleSignUp}>Je m'inscris</Components.Button>
                 </Components.Form>
@@ -131,11 +166,11 @@ function Connexion() {
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
-                    <div style={{color: 'red'}}>{errors?.email}</div>
+                    <div style={{ color: 'red' }}>{errors?.email}</div>
                     <Components.Input type='password' onChange={tacklePasswordChange} placeholder='Mot de Passe' />
-                    <div style={{color: 'red'}}>{errors?.password}</div>
+                    <div style={{ color: 'red' }}>{errors?.password}</div>
                     <Components.Anchor href='#'>J'ai oublié le mot de passe !</Components.Anchor>
-                    <div style={{color: 'red'}}>{message}</div>
+                    <div style={{ color: 'red' }}>{message}</div>
                     <Components.Button type="submit" onClick={HandleLogin}>Connexion</Components.Button>
                 </Components.Form>
             </Components.SignInContainer>
@@ -149,7 +184,7 @@ function Connexion() {
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
                             setMessage('');
-                            setErrors({});
+                            setErrors(null);
                             setEmail('');
                             setPassword('');
                             toggle(true);
@@ -165,7 +200,7 @@ function Connexion() {
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
                             setMessage('');
-                            setErrors({});
+                            setErrors(null);
                             setEmail('');
                             setPassword('');
                             toggle(false);
