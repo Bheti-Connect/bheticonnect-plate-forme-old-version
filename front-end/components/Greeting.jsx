@@ -4,6 +4,7 @@ import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-ico
 import { useEffect, useState } from 'react';
 
 
+const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
 
 const Greeting = () => {
 
@@ -42,9 +43,9 @@ const handle = (notif) => {
 
     useEffect(() => {
         // Perform localStorage action
-        const data = JSON.parse(localStorage.getItem('user-info'));
+        const data = usrLocalInfo;
         setName(data?.name)
-      }, [])
+        }, [])
 
     const toggleMenu = () => {
         if(!document.querySelector('.first ul').classList.contains('menu'))
@@ -57,14 +58,10 @@ const handle = (notif) => {
         }
         
     }
-
-
-
-
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {name}</h5>
+                <h5>{greet}, {usrLocalInfo.data.name}</h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
