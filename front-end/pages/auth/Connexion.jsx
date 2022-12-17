@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import * as Components from './Components';
-import AutoGreet from '../../components/AutoGreet'
-import { useRouter } from 'next/router'
+import AutoGreet from '../../components/AutoGreet';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import LinkedIn from '../../assets/images/LinkedIn_Logo_Black.png'
 
 function Connexion() {
     const [signIn, toggle] = useState(true);
@@ -73,6 +75,18 @@ function Connexion() {
         <Components.Container>
             <Components.SignUpContainer signinIn={signIn}>
                 <Components.Form>
+                    <Components.Anchor className='small_paragraph'>Inscrivez-vous avec</Components.Anchor>
+                    <Components.LinkedinDiv>
+                        <Components.GotoLinkedin href="https://bheti-connect.smirltech.com/login/linkedin">
+                            <Components.LinkedinButton>
+                                LinkedIn
+                            </Components.LinkedinButton>
+                        </Components.GotoLinkedin>
+                        <Components.Image>
+                            <Image src={LinkedIn} alt='Linkedin Logo' className='logo_LinkedIn'/>
+                        </Components.Image>
+                    </Components.LinkedinDiv>
+                    <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
                     <Components.Title>Créer un Compte</Components.Title>
                     <Components.Input type='text' placeholder='Nom Complet' value={name} onChange={(e) => setName(e.target.value)} />
                     <Components.Input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -83,18 +97,24 @@ function Connexion() {
             </Components.SignUpContainer>
 
             <Components.SignInContainer signinIn={signIn}>
-                <a href="https://bheti-connect.smirltech.com/login/linkedin">
-                    linkedin
-                </a>
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
                     <Components.Input type='password' onChange={tacklePasswordChange} placeholder='Mot de Passe' />
                     <Components.Anchor href='#'>J'ai oublié le mot de passe !</Components.Anchor>
                     <Components.Button type="submit" onClick={HandleLogin}>Connexion</Components.Button>
+                    <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
+                    <Components.Anchor className='small_paragraph'>Connectez-vous via</Components.Anchor>
+                    <Components.LinkedinDiv>
+                        <Components.GotoLinkedin href="https://bheti-connect.smirltech.com/login/linkedin">
+                                LinkedIn
+                        </Components.GotoLinkedin>
+                        <Components.Image>
+                            <Image src={LinkedIn} alt='Linkedin Logo' className='logo_LinkedIn'/>
+                        </Components.Image>
+                    </Components.LinkedinDiv>
                 </Components.Form>
             </Components.SignInContainer>
-
             <Components.OverlayContainer signinIn={signIn}>
                 <Components.Overlay signinIn={signIn}>
                     <Components.LeftOverlayPanel signinIn={signIn}>
