@@ -25,9 +25,9 @@ const index = () => {
             localStorage.setItem('user-info', JSON.stringify(user));
             if (user.data.role == null) {
                 router.push('/Etape-Suivante')
-            } else if (result.data.role == 'investisseur') {
+            } else if (user.data.role == 'investisseur') {
                 router.push('/Investisseur/Accueil');
-            } else if (result.data.role == 'entrepreneur') {
+            } else if (user.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
             }
         }
