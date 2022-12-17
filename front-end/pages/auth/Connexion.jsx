@@ -1,9 +1,7 @@
 import React, { Component, useCallback, useEffect, useState } from "react";
 import * as Components from './Components';
-import AutoGreet from '../../components/AutoGreet';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import LinkedIn from '../../assets/images/LinkedIn_Logo_Black.png'
+import AutoGreet from '../../components/AutoGreet'
+import { useRouter } from 'next/router'
 
 function Connexion() {
     const [signIn, toggle] = useState(true);
@@ -25,13 +23,6 @@ function Connexion() {
     let credentials = { email, password }
 
     const HandleLogin = async (e) => {
-        const url = new URL(
-            "https://bheti-connect.smirltech.com/api/login"
-        );
-        const headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        };
         e.preventDefault();
         setMessage('');
         setErrors(null);
@@ -74,14 +65,11 @@ function Connexion() {
                 router.push('/Investisseur/Accueil');
             } else if (result.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
-<<<<<<< HEAD
-=======
             }
         } else {
             setErrors(result.errors ? result.errors : {});
             if (!result.errors) {
                 setMessage(result.message);
->>>>>>> origin/dev-umer
             }
         }
     }
@@ -89,13 +77,6 @@ function Connexion() {
     let signup_data = { name, email, password, confirmPass };
 
     const HandleSignUp = async (e) => {
-        const url = new URL(
-            "https://bheti-connect.smirltech.com/api/register"
-        );
-        const headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-        };
         e.preventDefault();
         setMessage('');
         setErrors(null);
@@ -168,18 +149,6 @@ function Connexion() {
         <Components.Container>
             <Components.SignUpContainer signinIn={signIn}>
                 <Components.Form>
-                    <Components.Anchor className='small_paragraph'>Inscrivez-vous avec</Components.Anchor>
-                    <Components.LinkedinDiv>
-                        <Components.GotoLinkedin href="https://bheti-connect.smirltech.com/login/linkedin">
-                            <Components.LinkedinButton>
-                                LinkedIn
-                            </Components.LinkedinButton>
-                        </Components.GotoLinkedin>
-                        <Components.Image>
-                            <Image src={LinkedIn} alt='Linkedin Logo' className='logo_LinkedIn'/>
-                        </Components.Image>
-                    </Components.LinkedinDiv>
-                    <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
                     <Components.Title>Créer un Compte</Components.Title>
                     <Components.Input type='text' placeholder='Nom Complet' value={name} onChange={(e) => setName(e.target.value)} />
                     <div style={{ color: 'red' }}>{errors?.name}</div>
@@ -203,18 +172,9 @@ function Connexion() {
                     <Components.Anchor href='#'>J'ai oublié le mot de passe !</Components.Anchor>
                     <div style={{ color: 'red' }}>{message}</div>
                     <Components.Button type="submit" onClick={HandleLogin}>Connexion</Components.Button>
-                    <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
-                    <Components.Anchor className='small_paragraph'>Connectez-vous via</Components.Anchor>
-                    <Components.LinkedinDiv>
-                        <Components.GotoLinkedin href="https://bheti-connect.smirltech.com/login/linkedin">
-                                LinkedIn
-                        </Components.GotoLinkedin>
-                        <Components.Image>
-                            <Image src={LinkedIn} alt='Linkedin Logo' className='logo_LinkedIn'/>
-                        </Components.Image>
-                    </Components.LinkedinDiv>
                 </Components.Form>
             </Components.SignInContainer>
+
             <Components.OverlayContainer signinIn={signIn}>
                 <Components.Overlay signinIn={signIn}>
                     <Components.LeftOverlayPanel signinIn={signIn}>
