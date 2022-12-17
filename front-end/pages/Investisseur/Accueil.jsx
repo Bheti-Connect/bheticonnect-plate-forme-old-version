@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React,  { useEffect } from 'react'
+import styled from 'styled-components';
 import Image from 'next/image';
 import * as Components from '../styled_Files/plate_forme'
 import Cover from '../../assets/images/background-First.png'

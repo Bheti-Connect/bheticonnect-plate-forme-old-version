@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useCallback, useEffect, useState } from "react";
 import * as Components from './Components';
 import AutoGreet from '../../components/AutoGreet';
 import Image from 'next/image';
@@ -11,6 +11,8 @@ function Connexion() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
+    const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState('');
     const router = useRouter()
 
     const tackleEmailChange = (e) => {
@@ -31,6 +33,33 @@ function Connexion() {
             "Accept": "application/json",
         };
         e.preventDefault();
+        setMessage('');
+        setErrors(null);
+        let err = {};
+        if (email == '') {
+            err = {
+                ...err,
+                email: 'The email field is required',
+            }
+            setErrors(err);
+            return;
+        }
+
+        if (password == '') {
+            err = {
+                ...err,
+                password: 'The password field is required',
+            }
+            setErrors(err);
+            return;
+        }
+        const url = new URL(
+            "https://bheti-connect.smirltech.com/api/login"
+        );
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
         let result = await fetch(url, {
             method: "POST",
             headers,
@@ -45,6 +74,14 @@ function Connexion() {
                 router.push('/Investisseur/Accueil');
             } else if (result.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
+<<<<<<< HEAD
+=======
+            }
+        } else {
+            setErrors(result.errors ? result.errors : {});
+            if (!result.errors) {
+                setMessage(result.message);
+>>>>>>> origin/dev-umer
             }
         }
     }
@@ -60,6 +97,60 @@ function Connexion() {
             "Accept": "application/json",
         };
         e.preventDefault();
+        setMessage('');
+        setErrors(null);
+        let err = {};
+        if (name == '') {
+            err = {
+                ...err,
+                name: 'The name field is required',
+            }
+            setErrors(err);
+            return;
+        }
+        if (email == '') {
+            err = {
+                ...err,
+                email: 'The email field is required',
+            }
+            setErrors(err);
+            return;
+        }
+
+        if (password == '') {
+            err = {
+                ...err,
+                password: 'The password field is required',
+            }
+            setErrors(err);
+            return;
+        }
+        var regex = /^(?=.{8,})(?=.*[A-Z])(?=.*[@#$%^&+*!=]).*$/;
+        if (!regex.test(password)) {
+            err = {
+                ...err,
+                password: 'Password must contain minimum eight characters, at least one uppercase letter and one number'
+            }
+            setErrors(err);
+            return;
+        }
+        if (password != confirmPass) {
+            err = {
+                ...err,
+                password: 'Password does not matches with the confirm password'
+            }
+            setErrors(err);
+            return;
+        }
+
+        const url = new URL(
+            "https://bheti-connect.smirltech.com/api/register"
+        );
+        const headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        };
+
         let result = await fetch(url, {
             method: "POST",
             headers,
@@ -68,6 +159,8 @@ function Connexion() {
         if (result.success) {
             localStorage.setItem("user-info", JSON.stringify(result));
             router.push('/Etape-Suivante')
+        } else {
+            setErrors(result.errors ? result.errors : {});
         }
     }
 
@@ -89,19 +182,26 @@ function Connexion() {
                     <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
                     <Components.Title>Créer un Compte</Components.Title>
                     <Components.Input type='text' placeholder='Nom Complet' value={name} onChange={(e) => setName(e.target.value)} />
+                    <div style={{ color: 'red' }}>{errors?.name}</div>
                     <Components.Input type='email' placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <div style={{ color: 'red' }}>{errors?.email}</div>
                     <Components.Input type='password' placeholder='Mot de Passe' value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <div style={{ color: 'red' }}>{errors?.password}</div>
                     <Components.Input type='password' placeholder='Confirmez le mot de passe' value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} />
                     <Components.Button type="submit" onClick={HandleSignUp}>Je m'inscris</Components.Button>
                 </Components.Form>
             </Components.SignUpContainer>
 
             <Components.SignInContainer signinIn={signIn}>
+                <a href="https://bheti-connect.smirltech.com/login/linkedin">Linkedin</a>
                 <Components.Form>
                     <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
+                    <div style={{ color: 'red' }}>{errors?.email}</div>
                     <Components.Input type='password' onChange={tacklePasswordChange} placeholder='Mot de Passe' />
+                    <div style={{ color: 'red' }}>{errors?.password}</div>
                     <Components.Anchor href='#'>J'ai oublié le mot de passe !</Components.Anchor>
+                    <div style={{ color: 'red' }}>{message}</div>
                     <Components.Button type="submit" onClick={HandleLogin}>Connexion</Components.Button>
                     <Components.OtherConnexion> - Ou - </Components.OtherConnexion>
                     <Components.Anchor className='small_paragraph'>Connectez-vous via</Components.Anchor>
@@ -123,6 +223,8 @@ function Connexion() {
                             Déjà inscris sur la plate-forme? Veuillez vous connecter à l'aide vos identifiants.
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
+                            setMessage('');
+                            setErrors(null);
                             setEmail('');
                             setPassword('');
                             toggle(true);
@@ -137,6 +239,8 @@ function Connexion() {
                             Inscrivez-vous et commencez votre expérience avec nous
                         </Components.Paragraph>
                         <Components.GhostButton onClick={() => {
+                            setMessage('');
+                            setErrors(null);
                             setEmail('');
                             setPassword('');
                             toggle(false);

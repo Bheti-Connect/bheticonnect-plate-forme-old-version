@@ -3,8 +3,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Connexion from './auth/Connexion'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+    let user = JSON.parse(localStorage.getItem("user-info"));
+    if(user) {
+      if(user.data.role == null) {
+        router.push('/Etape-Suivante')
+      }
+      else if(user.data.role == 'investisseur') {
+        router.push('/Investisseur/Accueil');
+      }
+    }
+  }, [])
   return (
     <div className={styles.container}>
       <Head>

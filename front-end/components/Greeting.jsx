@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 
 
 const Greeting = () => {
+
+    const [name, setName] = useState('');
 
     const day = new Date();
     const hourNow = day.getHours();
@@ -37,6 +40,11 @@ const handle = (notif) => {
         greet = " Bienvenue"
     }
 
+    useEffect(() => {
+        // Perform localStorage action
+        const data = JSON.parse(localStorage.getItem('user-info'));
+        setName(data?.name)
+      }, [])
 
     const toggleMenu = () => {
         if(!document.querySelector('.first ul').classList.contains('menu'))
@@ -56,7 +64,7 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, Richard</h5>
+                <h5>{greet}, {name}</h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
