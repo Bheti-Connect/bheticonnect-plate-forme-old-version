@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 
-const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+
 
 const Greeting = () => {
 
     const [name, setName] = useState('');
+
+    const router = useRouter();
 
     const day = new Date();
     const hourNow = day.getHours();
@@ -43,7 +46,7 @@ const handle = (notif) => {
 
     useEffect(() => {
         // Perform localStorage action
-        const data = usrLocalInfo;
+        const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
         setName(data?.name)
         }, [])
 
@@ -61,7 +64,7 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {usrLocalInfo.data.name}</h5>
+                <h5>{greet}, {name}</h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
@@ -84,7 +87,10 @@ const handle = (notif) => {
                     <FontAwesomeIcon icon={faBell} className='icon bell' />
                 </span>
                 <span>
-                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' />
+                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' onClick={() => {
+                        localStorage.removeItem('user-info');
+                        router.push('/');
+                    }} />
                 </span>
             </div>
         </GreetMe>
