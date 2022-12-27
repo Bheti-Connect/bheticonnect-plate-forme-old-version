@@ -15,6 +15,9 @@ const Footer = () => {
             </div>
             <div className="second_div">
             <h3>Retrouvez-nous sur</h3>
+                <div className="linkedin_div">
+                    
+                </div>
             </div>
         </div>
         </FooterStyled>
@@ -22,14 +25,13 @@ const Footer = () => {
 };
 
 const FooterStyled = styled.footer`
-    
+    position: relative;
     bottom: 40px;
     left: 7vw;
 
     .line {
         position: relative;
         width: 85vw;
-        margin: auto;
         height: 1.2px;
         border: 0;
         background: black;

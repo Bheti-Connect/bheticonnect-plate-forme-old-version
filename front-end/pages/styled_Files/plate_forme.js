@@ -14,7 +14,7 @@ export const AccueilStyled = styled.section`
 }
 
 .profil_div{
-    position: absolute;
+    position: relative;
     width: 12%;
     .pp_logo{
         width: 62%;
@@ -30,7 +30,7 @@ export const AccueilStyled = styled.section`
 }
 `
 export const WelcomeStyled = styled.h2`
-    /*position: absolute;*/
+    position: absolute;
     margin-top: 100px;
     font-size: 40px ;
     width: 80vw;

@@ -4,7 +4,7 @@ import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-ico
 import { useEffect, useState } from 'react';
 
 
-const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+
 
 const Greeting = () => {
 
@@ -38,14 +38,21 @@ const handle = (notif) => {
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
     } else {
-        greet = " Bienvenue"
+        greet = " Bienvenue";
     }
 
     useEffect(() => {
         // Perform localStorage action
+        //Retrieve connected user firstName
+        
+        const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+        const fullName = usrLocalInfo.data.name.split(' ');
+        const firstName = fullName[0];
+
         const data = usrLocalInfo;
         setName(data?.name)
         }, [])
+
 
     const toggleMenu = () => {
         if(!document.querySelector('.first ul').classList.contains('menu'))
@@ -61,7 +68,7 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {usrLocalInfo.data.name}</h5>
+                <h5>{greet}, </h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
@@ -92,8 +99,9 @@ const handle = (notif) => {
 }
 
 const GreetMe = styled.div`
-position: absolute;
-right: 20px;
+position: relative;
+margin-right: 2% ;
+float: right;
 width: 400px;
 height: 40px;
 padding-left: 20px;
@@ -130,7 +138,6 @@ display: flex;
         span + span {
             margin-left: 13px;
         }
-
         .notification_point{
             position: absolute;
             height: 15px;
@@ -145,13 +152,10 @@ display: flex;
             text-align: center;
             user-select: none;
         }
-
         .first > svg:hover ~ .notification_point {
             animation-name: bounce;
             animation-duration: 1s;
         }
-
-
         @keyframes bounce {
         0%, 20%, 53%, 80%, 100% {
         transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -169,9 +173,6 @@ display: flex;
         transform: translate3d(0,-4px,0);
         }
         }
-
-
-
         .first{
             .menu{
             position: absolute;
@@ -185,12 +186,10 @@ display: flex;
             z-index: 999;
             user-select: none;
             }
-
             .hide_menu{
                 display: none;
             }
             
-
             .menu:before{
             position: absolute;
             content: '';
@@ -202,8 +201,6 @@ display: flex;
             transform: rotate(45deg);
             z-index: -1;
             }
-
-
             .menu li a:before{
             position: absolute;
             content: '';
@@ -214,8 +211,6 @@ display: flex;
             left: 14px;
             margin-top: 8px;
             }
-
-
             .menu li{
             display: flex;
             line-height: 20px;
@@ -223,24 +218,20 @@ display: flex;
             cursor: pointer;
             border-bottom: 1px solid rgba(0,0,0,0.2);
             justify-content: space-between;
-
             span{
                 color: white;
                 font-size: 10px;
             }
             }
-
             .menu li a{
             color: white;
             text-decoration: none;
             font-size: 14px;
             margin-left: -18px;
             }
-
             .menu li a:hover , .menu li label:hover{
             color: cyan;
             }
-
             .view_all span{
                 width: 100%;
                 margin:auto;
@@ -251,15 +242,12 @@ display: flex;
                 padding: 5px;
                 font-weight: 700;
                 border-top: 1px gray solid;
-
                 &:hover{
                     color: cyan;
                 }
             }
         }
-
-
     }
 `
 
-export default Greeting
+export default Greeting;

@@ -29,13 +29,19 @@ const Accueil = () => {
             <Components.WelcomeStyled>Découvrez des opportunités d’investissements exclusives </Components.WelcomeStyled>
             <SubText />
             <Greeting />
-            
-            <AllCards/>
+            <CardsDiv className='cards_display'>
+                <AllCards/>
+            </CardsDiv>
             
             <Footer />
         </Components.AccueilStyled>
     )
 }
+
+const CardsDiv = styled.div`
+    position: relative;
+    margin: 230px 0px 10px;
+`
 
 
 export default Accueil;
