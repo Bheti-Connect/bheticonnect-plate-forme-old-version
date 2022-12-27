@@ -68,7 +68,7 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, </h5>
+                <h5>{greet}, {firstName} </h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>

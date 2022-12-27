@@ -7,4 +7,4 @@ const Accueil = () => {
     )
 }
 
-export default Accueil
+export default Accueil;
