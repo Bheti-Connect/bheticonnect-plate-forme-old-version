@@ -2,13 +2,14 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-
-
+import { useRouter } from 'next/router';
 
 
 const Greeting = () => {
 
     const [name, setName] = useState('');
+
+    const router = useRouter();
 
     const day = new Date();
     const hourNow = day.getHours();
@@ -23,7 +24,6 @@ const Greeting = () => {
     {"notification" : "Pitch deck 6", "time": "15/12/2022 à 12:32"},
     {"notification" : "Pitch deck 7", "time": "25/12/2025 à 12:32"},
 ])
-
 
 const handle = (notif) => {
     console.log(notif)
@@ -45,11 +45,11 @@ const handle = (notif) => {
         // Perform localStorage action
         //Retrieve connected user firstName
         
-        const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
-        const fullName = usrLocalInfo.data.name.split(' ');
-        const firstName = fullName[0];
+        // const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+        // const fullName = usrLocalInfo.data.name.split(' ');
+        // const firstName = fullName[0];
 
-        const data = usrLocalInfo;
+        const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
         setName(data?.name)
         }, [])
 
@@ -68,13 +68,12 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {firstName} </h5>
+                <h5>{greet}, {name} </h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBriefcase} className='icon briefcase' />
                     <span className='notification_point'>5</span>
-
 
                     {/* List notification */}
                     <ul className="hide_menu">
@@ -91,7 +90,10 @@ const handle = (notif) => {
                     <FontAwesomeIcon icon={faBell} className='icon bell' />
                 </span>
                 <span>
-                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' />
+                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' onClick={() => {
+                        localStorage.removeItem('user-info');
+                        router.push('/');
+                    }} />
                 </span>
             </div>
         </GreetMe>

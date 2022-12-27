@@ -30,6 +30,15 @@ const notify = (e, router) => {
             if(data.data) {
                 if(data.data.role == 'entrepreneur') {
                     router.push('/Entrepreneur/Accueil');
+                    let user = JSON.parse(localStorage.getItem('user-info'));
+                    user = {
+                        ...user,
+                        data: {
+                            ...user.data,
+                            role: 'entrepreneur'
+                        }
+                    }
+                    localStorage.setItem('user-info',JSON.stringify(user));
                 }
             }
         }

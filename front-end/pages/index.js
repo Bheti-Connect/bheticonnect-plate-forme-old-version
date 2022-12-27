@@ -16,6 +16,8 @@ export default function Home() {
       }
       else if(user.data.role == 'investisseur') {
         router.push('/Investisseur/Accueil');
+      } else if(user.data.role == 'entrepreneur') {
+        router.push('/Entrepreneur/Accueil');
       }
     }
   }, [])
