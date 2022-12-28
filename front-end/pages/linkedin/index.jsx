@@ -29,6 +29,8 @@ const index = () => {
                 router.push('/Investisseur/Accueil');
             } else if (user.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
+            } else if (user.data.role == 'administrateur') {
+                router.push('/Administrateur/Accueil');
             }
         }
         getUser();

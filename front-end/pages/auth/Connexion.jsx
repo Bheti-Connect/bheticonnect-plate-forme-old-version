@@ -65,6 +65,8 @@ function Connexion() {
                 router.push('/Investisseur/Accueil');
             } else if (result.data.role == 'entrepreneur') {
                 router.push('/Entrepreneur/Accueil');
+            } else if (user.data.role == 'administrateur') {
+                router.push('/Administrateur/Accueil');
             }
         } else {
             setErrors(result.errors ? result.errors : {});

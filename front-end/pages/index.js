@@ -12,12 +12,14 @@ export default function Home() {
     let user = JSON.parse(localStorage.getItem("user-info"));
     if(user) {
       if(user.data.role == null) {
-        router.push('/Etape-Suivante')
+        router.push('/Etape-Suivante');
       }
       else if(user.data.role == 'investisseur') {
         router.push('/Investisseur/Accueil');
       } else if(user.data.role == 'entrepreneur') {
         router.push('/Entrepreneur/Accueil');
+      } else if (user.data.role == 'administrateur') {
+        router.push('/Administrateur/Accueil');
       }
     }
   }, [])

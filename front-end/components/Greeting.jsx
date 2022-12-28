@@ -50,7 +50,7 @@ const handle = (notif) => {
         // const firstName = fullName[0];
 
         const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
-        setName(data?.name)
+        setName(usrLocalInfo.data?.name)
         }, [])
 
 
@@ -68,7 +68,7 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {name} </h5>
+                <h5>{greet}, {name.split(' ')[0]} </h5>
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
