@@ -58,11 +58,13 @@ font-size: 30px;
 `;
 
 export const Input = styled.input`
+color: #000000;
 background-color: #eee;
 border: none;
 padding: 12px 15px;
 margin: 8px 0;
 width: 100%;
+
 `;
 
 
