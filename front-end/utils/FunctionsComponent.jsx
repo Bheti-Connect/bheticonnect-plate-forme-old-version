@@ -39,21 +39,25 @@ export const handleSelect = (setSelect, setModal, item) => {
  }
 
  // Fetch GET
- export const fetch_get = (url) => {
-    fetch(url, {
-    method: 'GET',
-    headers:{
+ export const fetch_get = async (url) => {
+
+    let resp = await fetch(url, {
+        method: 'GET',
+        headers:{
+            'Content-Type':'application/json'
+        }
+        })
         
-        'Content-Type':'application/json'
+    let result = await resp.json()
+
+    if (resp.status == 200){
+        return result
     }
-    }).then((res) => {res.json()}).then((result) => {
-
-    return result;
-
-    }).catch((error) => {
-
-    console.log(error);
-
-    })
+    /*
+        .then((res) => res.json()).then((result) => {
+        return result;
+        }).catch((error) => {
+        console.log(error);
+        })*/
  }
 
