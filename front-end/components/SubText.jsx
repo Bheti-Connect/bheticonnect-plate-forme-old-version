@@ -14,7 +14,7 @@ const SubText = () => {
     )
 }
 
-const TextContainerStyled = styled.div`
+export const TextContainerStyled = styled.div`
     position: absolute;
     width: 80%;
     margin-top: 60px;
