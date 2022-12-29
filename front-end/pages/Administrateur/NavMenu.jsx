@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logoBheti from '../assets/footer-logo.png'
+import logoBheti from '../../assets/images/footer-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { faGear, faHouse } from '@fortawesome/free-solid-svg-icons'

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import NavMenu from './NavMenu'
 import HeaderAdmin from './HeaderAdmin'
-import Example from './charts/Example'
+
 
 
 const Accueil = () => {
@@ -13,7 +13,6 @@ const Accueil = () => {
     <Container>
         <NavMenu/>
         <HeaderAdmin />
-        <Example />
 
     </Container>
     )
