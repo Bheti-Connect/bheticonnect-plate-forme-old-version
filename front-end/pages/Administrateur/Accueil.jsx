@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import NavMenu from './NavMenu'
 import HeaderAdmin from './HeaderAdmin'
 import BarChart from './Charts-Graphs/BarChart'
+import PieChart from './Charts-Graphs/PieChart'
 
 
 
@@ -16,9 +17,8 @@ const Accueil = () => {
         <HeaderAdmin />
 
         <ChartsAndGraphs>
-
             <BarChart />
-            
+            <PieChart />
         </ChartsAndGraphs>
 
     </Container>
@@ -34,7 +34,10 @@ const Container = styled.div`
 
 const ChartsAndGraphs = styled.div`
 
-
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    margin-top: 80px;
 
 `;
 
