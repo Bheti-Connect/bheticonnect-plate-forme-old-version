@@ -80,19 +80,19 @@ const Div = styled.div`
                     cursor: pointer;
                 }
                 .control-1{
-                    background-color: #2ECC71;
+                    background-color: #98261C;
                     transform: scale(0.65)
                 }
                 .control-2{
-                    background-color: #2ECC71;
+                    background-color: #98261C;
                     transform: scale(0.65);
                 }
                 .control-3{
-                    background-color: #2ECC71;
+                    background-color: #98261C;
                     transform: scale(0.65);
                 }
                 .control-4{
-                    background-color: #2ECC71;
+                    background-color: #98261C;
                     transform: scale(0.65);
                 }
                 .page-number {
