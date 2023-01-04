@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image';
 import styled from 'styled-components'
 import avatar from '../../assets/images/avatar.png'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
@@ -16,25 +16,32 @@ const HeaderAdmin = () => {
         "Michael"
     ])
 
+    const [connect, setConnect] = useState("")
+
+
+    useEffect(() => {
+        setConnect(user[Math.floor(Math.random()*user.length)])
+    }, [])
+
   return (
     <Container>
     <div className="left">
         <ul>
             <li className='head-text'>Dahsboard</li>
-            <li className='welcome'>Welcome back, {user[Math.floor(Math.random()*user.length)]} <span className='hand-icon'>👋</span></li>
+            <li className='welcome'>Welcome back, {connect} <span className='hand-icon'>👋</span></li>
         </ul>
     </div>
 
 
     <div className="right">
         <div className='notification'>
-            <Link to="#" className='icon'>
+            <a href="#" className='icon'>
                 <FontAwesomeIcon className='bell-icon' icon={faBell}/>
                 <span className='number'>10</span>
-            </Link>
+            </a>
         </div>
         <div className='profil'>
-            <img src={avatar} className="avatar" alt="avatar profil" />
+            <Image src={avatar} className="avatar" alt="avatar profil" />
         </div>
     </div>
     </Container>
@@ -85,6 +92,7 @@ const Container = styled.div`
             align-self: center;
             .avatar{
                 width: 47px;
+                height: 47px;
                 border: 3px solid #641C1C;
                 border-radius: 50%;
             }

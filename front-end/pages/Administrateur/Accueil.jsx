@@ -10,11 +10,14 @@ import PieChart from './Charts-Graphs/PieChart'
 const Accueil = () => {
 
 
-
+/*
+ <NavMenu/>
+ <HeaderAdmin />
+*/
     return (
     <Container>
-        <NavMenu/>
-        <HeaderAdmin />
+       <NavMenu/>
+       <HeaderAdmin />
 
         <ChartsAndGraphs>
             <BarChart />

@@ -1,18 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import logoBheti from '../../assets/images/footer-logo.png'
+import logoBheti from './../../assets/images/footer-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
 import { faGear, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faUserDoctor, faDollar, faComment, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image';
 
 const NavMenu = () => {
-
-
-
-
-
-
 
 
 
@@ -22,34 +16,34 @@ const NavMenu = () => {
     <Container>
         <ul>
             <li>
-                <Link className='logo' to="#">
-                    <img src={logoBheti} alt="logo bheti" />
-                </Link>
+                <a className='logo' href="#">
+                    <Image src={logoBheti} alt='logo bheti' />
+                </a>
             </li>
-            <li className='button afterLogo'><Link to="#">
+            <li className='button afterLogo'><a href="#">
                 <FontAwesomeIcon className='icon' icon={faHouse} />
                 <span className="nav-item">Dashboard</span>
-            </Link></li>
-            <li  className='button'><Link to="#">
+            </a></li>
+            <li  className='button'><a href="#">
                 <FontAwesomeIcon className='icon' icon={faUserDoctor} />
                 <span className="nav-item">Investisseur</span>
-            </Link></li>
-            <li  className='button'><Link to="#">
+            </a></li>
+            <li  className='button'><a href="#">
             <FontAwesomeIcon className='icon' icon={faDollar} />
                 <span className="nav-item">Money</span>
-            </Link></li>
-            <li  className='button'><Link to="#">
+            </a></li>
+            <li  className='button'><a href="#">
                 <FontAwesomeIcon className='icon' icon={faComment} />
                 <span className="nav-item">Commentaire</span>
-            </Link></li>
-            <li  className='button'><Link to="#" className='setting'>
+            </a></li>
+            <li  className='button'><a href="#" className='setting'>
                 <FontAwesomeIcon className='icon' icon={faGear} />
                 <span className="nav-item">Parametre</span>
-            </Link></li>
-            <li  className='button'><Link to="#" className='logout'>
+            </a></li>
+            <li  className='button'><a href="#" className='logout'>
                 <FontAwesomeIcon className='icon' icon={faRightFromBracket} />
                 <span className="nav-item">Deconnexion</span>
-            </Link></li>
+            </a></li>
         </ul>
     </Container>
   )
@@ -75,6 +69,18 @@ transition: width 0.2s linear;
     width: 280px;
     transition: all 0.5s ease;
 }
+
+ul li{
+    list-style: none;
+}
+
+
+ul{
+    padding: 0;
+}
+
+
+
 
 .logo{
     display: flex;
