@@ -6,6 +6,7 @@ import Logo from '../../assets/images/bheti-connect-logo.jpeg'
 import SubText from '../../components/SubText';
 import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
+import styled from 'styled-components';
 const Accueil = () => {
     return (
         <Components.AccueilStyled>
@@ -18,9 +19,18 @@ const Accueil = () => {
         <Components.WelcomeStyled>Bheti Connect Base </Components.WelcomeStyled>
         <SubText />
         <Greeting />
-        <Footer />
+        <FooterStyled className='footer'>
+            <Footer />
+        </FooterStyled>
     </Components.AccueilStyled>
     )
 }
+
+
+const FooterStyled = styled.div`
+position: absolute;
+bottom: 0px;
+
+`
 
 export default Accueil
