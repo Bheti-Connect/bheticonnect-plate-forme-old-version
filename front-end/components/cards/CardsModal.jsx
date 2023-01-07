@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '../../context/themecontext';
-import { Link } from 'react-router-dom';
 import { closeModal } from '../../utils/FunctionsComponent';
+import Image from 'next/image';
 
 const CardsModal = ({select, setModal}) => {
 
-    const theme = useTheme();
+  const theme = useTheme();
+  const [imgProject, setImgProject] = useState("")
 
-// Format currency Euro
-let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency: 'EUR'})
+  // Format currency Euro
+  let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency: 'EUR'})
 
-// Generate image
-let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
+  // Generate image
+  const handleImage = () => {
+    setImgProject("https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`)
+  }
+
+  useEffect(() => {
+    handleImage()
+  },[])
 
 
   return (
@@ -37,7 +44,7 @@ let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/2
 
                 <div className='project-detail'>
                   <div>
-                  <img src={source} alt='project'/>
+                    <Image src={imgProject} alt='project' width={300} height={200}/>
                   </div>
 
                   <div className='detail'>
@@ -84,7 +91,7 @@ let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/2
 
                 <div className='deck'>
 
-                <Link to={'#'} className='Btn-deck'>Récevoir le deck</Link>
+                <a href='#' className='Btn-deck'>Récevoir le deck</a>
                 
                 </div>
 
