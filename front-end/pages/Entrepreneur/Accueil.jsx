@@ -3,10 +3,10 @@ import Image from 'next/image';
 import * as Components from '../styled_Files/plate_forme'
 import Cover from '../../assets/images/CoverEntrepreneur.jpg'
 import Logo from '../../assets/images/bheti-connect-logo.jpeg'
-import SubText from '../../components/SubText';
 import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
 import styled from 'styled-components';
+import SubTextEntrepreneur from '../../components/SubTextEntrepreneur';
 const Accueil = () => {
     return (
         <Components.AccueilStyled>
@@ -17,7 +17,7 @@ const Accueil = () => {
             <Image className='pp_logo' src={Logo} alt='Bheti Connect Logo' />
         </div>
         <Components.WelcomeStyled>Bheti Connect Base </Components.WelcomeStyled>
-        <SubText />
+        <SubTextEntrepreneur />
         <Greeting />
         <FooterStyled className='footer'>
             <Footer />
@@ -29,7 +29,8 @@ const Accueil = () => {
 
 const FooterStyled = styled.div`
 position: absolute;
-bottom: 0px;
+margin-top: 1000px;
+bottom: 2px;
 
 `
 
