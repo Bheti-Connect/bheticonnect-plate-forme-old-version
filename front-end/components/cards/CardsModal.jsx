@@ -26,7 +26,7 @@ const CardsModal = ({select, setModal}) => {
 
   return (
     <Container onClick={(e) => closeModal(e.target, setModal)}>
-        <div id="open-modal" className="modal-window close" >
+        <div id="open-modal" className="modal-window close">
             <div>
                 <div onClick={(e) => closeModal(e.target, setModal)} className="modal-close"><FontAwesomeIcon className="close" icon={faXmark} size="lg"/></div>
                 <Header>
