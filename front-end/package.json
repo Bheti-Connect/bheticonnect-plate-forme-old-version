@@ -15,6 +15,7 @@
     "@types/node": "18.7.14",
     "@types/react": "^18.0.18",
     "@types/styled-components": "5.1.26",
+    "axios": "^1.2.2",
     "babel-plugin-styled-components": "^2.0.7",
     "chart.js": "^4.1.1",
     "framer-motion": "^7.6.19",

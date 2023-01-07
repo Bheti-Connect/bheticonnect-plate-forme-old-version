@@ -1,3 +1,4 @@
+import axios from "axios";
 
 // handle disable modal
 export const closeModal = (tag, setModal) => {
@@ -17,47 +18,16 @@ export const handleSelect = (setSelect, setModal, item) => {
     setModal(true)
 }
 
+// axios GET
+export const axios_get = (url, functionGetData) => {
+    axios.get(url).then(res => {
+        functionGetData(res.data)
+      }).catch((error) => console.log(error))
+}
 
-// Fetch POST 
- export const fetch_post = async (url, body_data) => {
-    let resp = await fetch(url, {
-        method: 'POST',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:body_data
-      })
-
-      let result = await resp.json()
-
-      if (resp.status == 200){
-        return result;
-      }else{
-        console.log(resp);
-        //return "error_post_fecth"
-      }
- }
-
- // Fetch GET
- export const fetch_get = async (url) => {
-
-    let resp = await fetch(url, {
-        method: 'GET',
-        headers:{
-            'Content-Type':'application/json'
-        }
-        })
-        
-    let result = await resp.json()
-
-    if (resp.status == 200){
-        return result
-    }
-    /*
-        .then((res) => res.json()).then((result) => {
-        return result;
-        }).catch((error) => {
-        console.log(error);
-        })*/
- }
-
+// axios POST
+export const axios_post = (url, data_send, functionGetData) => {
+    axios.post(url, data_send).then(res => {
+        functionGetData(res.data)
+      }).catch((error) => console.log(error))
+}

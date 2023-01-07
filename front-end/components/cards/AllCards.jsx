@@ -7,7 +7,8 @@ import Cards from './Cards';
 import CardsModal from './CardsModal';
 import LoaderCards from './LoaderCards';
 import { useTheme } from '../../context/themecontext';
-import { fetch_get, fetch_post } from '../../utils/FunctionsComponent';
+import { axios_get, axios_post } from '../../utils/FunctionsComponent';
+import LinksAPI from '../../utils/LinksAPI';
 
 const AllCards = () => {
     // useState of pagination
@@ -41,21 +42,17 @@ const AllCards = () => {
         setTotalPage(response.meta.last_page);
         setItemsPerPage(response.meta.limit);
         setData(response.data);
-      }
+    }
   
   
       // GET data from API
       const getData = () => {
-        let source = "https://bheti-connect.smirltech.com/api/projets";
-      
-        let result = fetch_get(source)
-        console.log(result);
-        //handleSetData(result)
+        axios_get(LinksAPI.projets, handleSetData)
       }
   
   
       // Change Section of data : Tous, PME ou STARTUP
-      const changeSectionMenu = async (position) => {
+      const changeSectionMenu = (position) => {
         let source = "https://bheti-connect.smirltech.com/api/projets/search";
   
         if (position == "pme")
