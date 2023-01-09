@@ -9,7 +9,7 @@ import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import AllCards from '../../components/cards/AllCards';
-import { ModalTalkToExpert } from './ModalSweetAlert';
+//import { ModalTalkToExpert } from './ModalSweetAlert';
 
 const Accueil = () => {
     const router = useRouter();
@@ -24,7 +24,7 @@ const Accueil = () => {
     useEffect(() => {
 
         let waiting = setTimeout(() => {
-            ModalTalkToExpert()
+            //ModalTalkToExpert()
         }, 5000);
 
         return () => {

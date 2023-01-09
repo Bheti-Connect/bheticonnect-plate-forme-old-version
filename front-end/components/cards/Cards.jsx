@@ -2,30 +2,21 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { handleSelect } from '../../utils/FunctionsComponent';
 import { useTheme } from '../../context/themeContext';
-import { fetch_get } from '../../utils/FunctionsComponent';
+import Image from 'next/image';
 
 const Cards = ({item, setSelect, setModal}) => {
 
 
   const theme = useTheme()
 
-  const [imgProject, setImgProject] = useState(null)
+  const [imgProject, setImgProject] = useState("")
 
   // Format currency Euro
   let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency: 'EUR'})
 
   // Generate image
   const handleImage = () => {
-    let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
-
-    let result = fetch_get(source)
-    
-    if(result){
-      setImgProject(source)
-    }else{
-      setImgProject("https://picsum.photos/id/10/200/300")
-    }
-
+    setImgProject("https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`)
   }
 
   useEffect(() => {
@@ -37,7 +28,7 @@ const Cards = ({item, setSelect, setModal}) => {
   return (
     <CardItem onClick={() => handleSelect(setSelect, setModal, item)} theme={theme}>
           <CardHeader>
-            <img src={imgProject} alt='project'/>
+            <Image src={imgProject} alt='project' width={200} height={200} />
           </CardHeader>
 
           <CardBody>
