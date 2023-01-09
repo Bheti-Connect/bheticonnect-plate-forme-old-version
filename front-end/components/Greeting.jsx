@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import Image from 'next/image'
+import Verified from '../assets/images/profile_verified.png'
 import { useRouter } from 'next/router';
 
 
@@ -32,9 +34,9 @@ const handle = (notif) => {
     let greet = ''
 
     if ((hourNow > 18) && (hourNow < 24)) {
-        greet = "👍🏾 Bonsoir";
+        greet = "Bonsoir";
     }   else if ((hourNow > 12) && (hourNow < 18))  {
-        greet = "😏 Bon après-midi";
+        greet = "Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
     } else {
@@ -68,7 +70,15 @@ const handle = (notif) => {
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, {name.split(' ')[0]} </h5>
+                <h5>
+                    {greet}, {name.split(' ')[0]}
+                    
+                </h5>
+                <Image
+                    className='verified'
+                    src={Verified} 
+                    alt='' 
+                />
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
@@ -104,7 +114,7 @@ const GreetMe = styled.div`
 position: relative;
 margin-right: 2% ;
 float: right;
-width: 400px;
+width: 450px;
 height: 40px;
 padding-left: 20px;
 background-color: #091a2b;
@@ -113,14 +123,21 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 border-radius: 40px;
 margin-bottom: 1%;
 display: flex;
-    .greeting_div{
+.greeting_div{
+        display: flex;
         margin-top: -10px;
-        width: 80%;
+        width: 100%;
+        .verified{
+            position: relative;
+            margin-top: 15px ;
+            height: 25px;
+            width: 25px;
+        }
     }
     h5 {
         position: relative;
         font-weight: 700;
-        width: 80%;
+        width: 60%;
     }
     .briefcase_div{
         display: inline;

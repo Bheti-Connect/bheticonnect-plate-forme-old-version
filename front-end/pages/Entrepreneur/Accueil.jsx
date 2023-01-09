@@ -19,9 +19,9 @@ const Accueil = () => {
         <Components.WelcomeStyled>Bheti Connect Base </Components.WelcomeStyled>
         <SubTextEntrepreneur />
         <Greeting />
-        <FooterStyled className='footer'>
+        {/* <FooterStyled className='footer'>
             <Footer />
-        </FooterStyled>
+        </FooterStyled> */}
     </Components.AccueilStyled>
     )
 }

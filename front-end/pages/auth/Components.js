@@ -56,6 +56,14 @@ export const SignInContainer = styled.div`
     width: 50%;
     z-index: 2;
     ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
+    
+    .linkedinSignin {
+        width: 20%;
+        padding: 4px 15px;
+        margin-left: 25px;
+        color: white;
+        background-color: #0177B5;
+    }
 `;
 
 export const Form = styled.form`
@@ -133,25 +141,24 @@ ${props =>
     props.signinIn !== true ? `transform: translateX(-100%);` : null}
 `;
 
-export const OtherConnexion = styled.p`
-    color: #616A6B;
-    
+export const ParagraphConnexion = styled.h2`    
     text-align: center;
-    
-`
-
-export const GotoLinkedin = styled.a`
-    width: 100%;
-    
 `
 
 export const LinkedinDiv = styled.div`
     position: relative;
-    display: flex;
-    margin-left: 20%;
-    margin-right: 5%;
-    margin-top: 5px;
-    width: 100%;
+    margin: auto;
+    width: 70%;
+    .first{
+        position: relative;
+    }
+    .second{
+        position: relative;
+        a {
+            position: relative;
+            margin: 0 4vw;
+        }
+    }
     
 `
 
@@ -159,19 +166,7 @@ export const Image = styled.div`
     width: 100%;
     margin-top: 0px;
     margin-right: 0px ;
-    .logo_LinkedIn{
-        width: 20px;
-        height: 20px;
-    }
-`
-
-export const LinkedinButton = styled.button`
-    color: white;
-    width: 170%;
-    background: blue;
-    cursor: pointer;
-
-
+    
 `
 
 export const Overlay = styled.div`

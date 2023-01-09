@@ -164,9 +164,19 @@ function Connexion() {
             </Components.SignUpContainer>
 
             <Components.SignInContainer signinIn={signIn}>
-                <a href="https://bheti-connect.smirltech.com/login/linkedin">Linkedin</a>
+                <Components.LinkedinDiv>
+                    <div className="first">
+                        <Components.ParagraphConnexion>Connectez-vous via</Components.ParagraphConnexion>
+                    </div>
+                    <div className="second">
+                        <a  href="https://bheti-connect.smirltech.com/login/linkedin">
+                            <span className="linkedinSignin">
+                                Linkedin
+                            </span>
+                        </a>
+                    </div>
+                </Components.LinkedinDiv>
                 <Components.Form>
-                    <Components.Title>Connexion</Components.Title>
                     <Components.Input type='email' onChange={tackleEmailChange} placeholder='E-mail' />
                     <div style={{ color: 'red' }}>{errors?.email}</div>
                     <Components.Input type='password' onChange={tacklePasswordChange} placeholder='Mot de Passe' />
