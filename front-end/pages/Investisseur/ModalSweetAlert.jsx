@@ -18,7 +18,32 @@ export const ModalTalkToExpert = () => {
           validationMessage: '',
           confirmButton: 'confirm-sweet-connect',
         }
+      }).then((result) => {
+        if (result.isConfirmed)
+        {
+          ModalTalkToExpert()
+        }
       })
+}
+
+
+export const ModalWaiting = () => {
+
+  Swal.fire({
+      title: "Vous êtes en attente",
+      text: "Merci de patienter la validation de votre compte par l'administration.",
+      icon: 'success',
+      showCloseButton: false,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      confirmButtonAriaLabel: "sans-serif",
+      customClass: {
+        title: 'title-sweet-connect',
+        icon: 'icon-sweet-connect',
+        htmlContainer: 'text-sweet-connect',
+        validationMessage: '',
+      }
+    })
 }
 
 
