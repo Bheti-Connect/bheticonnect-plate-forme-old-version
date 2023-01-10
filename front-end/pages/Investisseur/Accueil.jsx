@@ -1,4 +1,4 @@
-import React,  { useEffect } from 'react'
+import React,  { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Image from 'next/image';
 import * as Components from '../styled_Files/plate_forme'
@@ -9,9 +9,25 @@ import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import AllCards from '../../components/cards/AllCards';
-//import { ModalTalkToExpert } from './ModalSweetAlert';
+import { ModalTalkToExpert, ModalWaiting } from './ModalSweetAlert';
 
 const Accueil = () => {
+
+    const [apiTest, setApiTest] = useState({
+        "option1":{
+            "isVerified": false,
+            "waiting":false
+        },
+        "option2":{
+            "isVerified": false,
+            "waiting":true
+        },
+        "option3":{
+            "isVerified": true,
+            "waiting":false
+        }
+    })
+
     const router = useRouter();
     useEffect(() => {
         let user = JSON.parse(localStorage.getItem('user-info'));
@@ -23,6 +39,17 @@ const Accueil = () => {
 
     useEffect(() => {
 
+        let test = apiTest.option2
+
+        if(test.waiting == false && test.isVerified == false){
+            ModalTalkToExpert()
+        }
+
+        if(test.waiting == true && test.isVerified == false){
+            ModalWaiting()
+        }
+
+        /*
         let waiting = setTimeout(() => {
             //ModalTalkToExpert()
         }, 5000);
@@ -30,6 +57,7 @@ const Accueil = () => {
         return () => {
         clearTimeout(waiting)
         }
+        */
 
     },[])
 
@@ -45,7 +73,7 @@ const Accueil = () => {
             <SubText />
             <Greeting />
             <CardsDiv className='cards_display'>
-                <AllCards/>
+                <AllCards/> 
             </CardsDiv>
             
             <Footer />
