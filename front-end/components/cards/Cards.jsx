@@ -34,7 +34,7 @@ const Cards = ({item, setSelect, setModal}) => {
   return (
     <CardItem onClick={() => handleSelect(setSelect, setModal, item)} theme={theme}>
           <CardHeader>
-            <Image src={imgProject} alt='project' width={200} height={200} />
+            <Image src={imgProject} alt='project' width={300} height={200} />
           </CardHeader>
 
           <CardBody>
@@ -233,10 +233,9 @@ ul li {
 `;
 
 const CardHeader = styled.div`
-
+  height: auto;
+  width: auto;
 img {
-  width: 100%;
-  height: 200px;
   object-fit: cover;
 }
 
