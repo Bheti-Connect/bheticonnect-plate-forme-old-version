@@ -39,7 +39,7 @@ const Accueil = () => {
 
     useEffect(() => {
 
-        let test = apiTest.option2
+        let test = apiTest.option3
 
         if(test.waiting == false && test.isVerified == false){
             ModalTalkToExpert()
