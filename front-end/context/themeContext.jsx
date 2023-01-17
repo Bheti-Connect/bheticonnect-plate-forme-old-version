@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react"
-import themes from "./themes";
+import react, { useContext, useState } from 'react'
+import themes from './themes';
 
-const ThemeContext = React.createContext();
-const ThemeUpdateContext = React.createContext();
+const ThemeContext = react.createContext();
+const ThemeUpdateContext = react.createContext();
 
 //Responsible for getting the initial state  
 export const useTheme = () => {
