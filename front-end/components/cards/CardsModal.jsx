@@ -25,10 +25,10 @@ const CardsModal = ({select, setModal}) => {
 
 
   return (
-    <Container onClick={(e) => closeModal(e.target, setModal)}>
+    <Container onClick={(e) => closeModal(e.currentTarget, setModal)}>
         <div id="open-modal" className="modal-window close">
             <div>
-                <div onClick={(e) => closeModal(e.target, setModal)} className="modal-close"><FontAwesomeIcon className="close" icon={faXmark} size="lg"/></div>
+                <div onClick={(e) => closeModal(e.currentTarget, setModal)} className="modal-close"><FontAwesomeIcon className="close" icon={faXmark} size="lg"/></div>
                 <Header>
                   <p>Projet {select.nom}</p>
                   <ul>
@@ -145,6 +145,7 @@ font-size: 16px;
     text-align: center;
     top: 15px;
     width: 70px;
+    cursor: pointer;
     &:hover {
       color: #EB1D36;
     }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Footer = () => {
     return (
         <FooterStyled>
-        <div class="line">
+        <div className="line">
             <hr />
         </div>
         <div className="container_div">

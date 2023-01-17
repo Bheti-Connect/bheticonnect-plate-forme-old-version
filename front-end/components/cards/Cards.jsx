@@ -5,16 +5,17 @@ import { useTheme } from '../../context/themeContext';
 import Image from 'next/image';
 import axios from 'axios';
 
-const Cards = ({item, setSelect, setModal}) => {
+const Cards = ({item, setSelect, setModal, imgProject, setImgProject}) => {
 
 
   const theme = useTheme()
 
-  const [imgProject, setImgProject] = useState("")
+  //const [imgProject, setImgProject] = useState("")
 
   // Format currency Euro
   let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency: 'EUR'})
 
+ 
   // Generate image
   const handleImage = () => {
     let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
@@ -27,14 +28,13 @@ const Cards = ({item, setSelect, setModal}) => {
 
   useEffect(() => {
     handleImage()
-  },[item])
-
+  },[])
 
 
   return (
     <CardItem onClick={() => handleSelect(setSelect, setModal, item)} theme={theme}>
           <CardHeader>
-            <Image src={imgProject} alt='project' width={300} height={200} />
+            <Image src={imgProject} alt="project" width={300} height={200} />
           </CardHeader>
 
           <CardBody>

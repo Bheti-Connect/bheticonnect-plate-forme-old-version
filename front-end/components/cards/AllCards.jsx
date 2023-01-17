@@ -9,6 +9,7 @@ import LoaderCards from './LoaderCards';
 import { useTheme } from '../../context/themecontext';
 import { axios_get, axios_post } from '../../utils/FunctionsComponent';
 import LinksAPI from '../../utils/LinksAPI';
+//import axios from 'axios';
 
 const AllCards = () => {
     // useState of pagination
@@ -33,6 +34,7 @@ const AllCards = () => {
     // Position change pagination : Tous, Startup, pme
     const [paginationSelect, setPaginationSelect] = useState("tous")
     const [positionTrie, setPositionTrie] = useState("")
+    const [imgProject, setImgProject] = useState("")
 
 
 
@@ -158,9 +160,10 @@ const AllCards = () => {
       }
     }
 
+
     // display items
     let displayItems = data.map((item, index) => {
-      return <Cards key={index} item={item} setModal={setModal} setSelect={setSelect} />
+      return <Cards key={index} item={item} setModal={setModal} setSelect={setSelect} imgProject={imgProject} setImgProject={setImgProject}/>
     })
 
 
@@ -169,7 +172,9 @@ const AllCards = () => {
         let waiting = setTimeout(() => {
           setLoading(false)
         }, 4000);
+
         changeSectionMenu()
+
         return () => {
           clearTimeout(waiting)
         }
