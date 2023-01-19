@@ -16,13 +16,13 @@ const Greeting = () => {
 
     // notification
     const [data, setData] = useState([
-    {"notification" : "Pitch deck 1", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 2", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 3", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 4", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 5", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 6", "time": "15/12/2022 à 12:32"},
-    {"notification" : "Pitch deck 7", "time": "25/12/2025 à 12:32"},
+    {"notification" : "Pitch deck 1", "date": "09/12/1022", "time": "12:00", "new": true},
+    {"notification" : "Pitch deck 2", "date": "01/12/2002", "time": "07:25", "new": true},
+    {"notification" : "Pitch deck 3", "date": "05/12/1995", "time": "12:03", "new": true},
+    {"notification" : "Pitch deck 4", "date": "15/12/2022", "time": "15:32", "new": false},
+    {"notification" : "Pitch deck 5", "date": "03/12/2030", "time": "12:10", "new": false},
+    {"notification" : "Pitch deck 6", "date": "02/01/2023", "time": "20:32", "new": false},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14", "new": false},
 ])
 
 const handle = (notif) => {
@@ -78,8 +78,8 @@ const handle = (notif) => {
                     {/* List notification */}
                     <ul className="hide_menu">
                         {
-                        data.map((item, index) => (
-                            <li key={index} onClick={() => handle(item)}><a href='#' >{item.notification}</a> <span>{item.time}</span></li>
+                        data.sort((a, b) => Date.parse(a.date) - Date.parse(b.date)).map((item, index) => (
+                            item.new == true ? (<li key={index} onClick={() => handle(item)}><a href='#' className='new_notification' >{item.notification}</a> <span>{item.time}</span></li>) : (<li key={index} onClick={() => handle(item)}><a href='#' >{item.notification}</a> <span>{item.time}</span></li>)
                         ))
                         }
                         <li className='view_all'><span>Toutes les notifications</span></li>
@@ -203,7 +203,9 @@ display: flex;
             transform: rotate(45deg);
             z-index: -1;
             }
-            .menu li a:before{
+
+
+            .menu li .new_notification:before{
             position: absolute;
             content: '';
             height: 7px;
@@ -213,6 +215,8 @@ display: flex;
             left: 14px;
             margin-top: 8px;
             }
+
+
             .menu li{
             display: flex;
             line-height: 20px;
