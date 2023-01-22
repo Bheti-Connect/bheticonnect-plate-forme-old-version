@@ -23,7 +23,7 @@ const HeaderAdmin = () => {
         setConnect(user[Math.floor(Math.random()*user.length)])
     }, [])
 
-  return (
+    return (
     <Container>
     <div className="left">
         <ul>
@@ -45,12 +45,12 @@ const HeaderAdmin = () => {
         </div>
     </div>
     </Container>
-  )
+    )
 }
 
 
 // Style CSS
-const Container = styled.div`
+export const Container = styled.div`
     display: flex;
     justify-content: space-around;
     margin-top: 20px;

@@ -13,7 +13,7 @@ const AutoGreet = () => {
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "👋🏽 Bonjour";
     } else {
-        greet = " Bienvenue"
+        greet = " Hello "
     }
     return (
         <div>

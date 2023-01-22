@@ -33,7 +33,7 @@ const handle = (notif) => {
 
     let greet = ''
 
-    if ((hourNow > 18) && (hourNow < 24)) {
+    if ((hourNow > 17) && (hourNow < 24)) {
         greet = "Bonsoir";
     }   else if ((hourNow > 12) && (hourNow < 18))  {
         greet = "Bon après-midi";

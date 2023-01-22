@@ -11,13 +11,12 @@ const Accueil = () => {
 
 
 /*
- <NavMenu/>
- <HeaderAdmin />
+    <NavMenu/>
+    <HeaderAdmin />
 */
     return (
     <Container>
-       <NavMenu/>
-       <HeaderAdmin />
+        <HeaderAdmin />
 
         <ChartsAndGraphs>
             <BarChart />

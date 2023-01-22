@@ -7,6 +7,7 @@ import Greeting from '../../components/Greeting';
 import Footer from '../../components/Footer';
 import styled from 'styled-components';
 import SubTextEntrepreneur from '../../components/SubTextEntrepreneur';
+import Eligibility from '../../components/Eligibility';
 const Accueil = () => {
     return (
         <Components.AccueilStyled>
@@ -17,8 +18,9 @@ const Accueil = () => {
             <Image className='pp_logo' src={Logo} alt='Bheti Connect Logo' />
         </div>
         <Components.WelcomeStyled>Bheti Connect Base </Components.WelcomeStyled>
-        <SubTextEntrepreneur />
         <Greeting />
+        <SubTextEntrepreneur />
+        <Eligibility />
         {/* <FooterStyled className='footer'>
             <Footer />
         </FooterStyled> */}
