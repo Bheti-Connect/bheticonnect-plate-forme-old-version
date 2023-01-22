@@ -1,14 +1,32 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-background-color: #fff;
-border-radius: 10px;
-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-position: relative;
-overflow: hidden;
-width: 678px;
-max-width: 100%;
-min-height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    max-width: 100%;
+    min-height: 450px;
+    @media only screen and (max-width: 960px){
+        width: 750px;
+        min-height: 440px;
+    }
+    @media only screen and (max-width: 768px){
+        width: 650px;
+        min-height: 460px;
+    }
+    @media only screen and (max-width: 425px){
+        min-height: 480px;
+        display: block grid;
+    }
+    @media only screen and (max-width: 375px){
+
+    }
+    @media only screen and (max-width: 320px){
+
+    }
 `;
 
 export const SignUpContainer = styled.div`
@@ -30,40 +48,51 @@ export const SignUpContainer = styled.div`
 
 
 export const SignInContainer = styled.div`
-position: absolute;
-top: 0;
-height: 100%;
-transition: all 0.6s ease-in-out;
-left: 0;
-width: 50%;
-z-index: 2;
-${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    left: 0;
+    width: 50%;
+    z-index: 2;
+    ${props => (props.signinIn !== true ? `transform: translateX(100%);` : null)}
+    
+    .linkedinSignin {
+        width: 20%;
+        padding: 4px 15px;
+        margin-left: 25px;
+        color: white;
+        background-color: #0177B5;
+    }
 `;
 
 export const Form = styled.form`
-background-color: #ffffff;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-padding: 0 50px;
-height: 100%;
-text-align: center;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+    .small_paragraph{
+        margin-top: -5px ;
+    }
 `;
 
 export const Title = styled.h1`
-font-weight: bold;
-margin: 0;
-font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+    font-size: 28px;
 `;
 
 export const Input = styled.input`
-background-color: #eee;
-border: none;
-padding: 12px 15px;
-margin: 8px 0;
-width: 100%;
-color: black;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    color: black;
 `;
 
 
@@ -89,8 +118,8 @@ export const Button = styled.button`
 `;
 
 export const GhostButton = styled(Button)`
-background-color: transparent;
-border-color: #ffffff;
+    background-color: transparent;
+    border-color: #ffffff;
 `;
 
 export const Anchor = styled.a`
@@ -111,6 +140,34 @@ z-index: 100;
 ${props =>
     props.signinIn !== true ? `transform: translateX(-100%);` : null}
 `;
+
+export const ParagraphConnexion = styled.h2`    
+    text-align: center;
+`
+
+export const LinkedinDiv = styled.div`
+    position: relative;
+    margin: auto;
+    width: 70%;
+    .first{
+        position: relative;
+    }
+    .second{
+        position: relative;
+        a {
+            position: relative;
+            margin: 0 4vw;
+        }
+    }
+    
+`
+
+export const Image = styled.div`
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px ;
+    
+`
 
 export const Overlay = styled.div`
 background: #ff416c;

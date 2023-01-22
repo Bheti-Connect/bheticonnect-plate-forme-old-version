@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import axios from 'axios';
 import { handleSelect } from '../../utils/FunctionsComponent';
 import { useTheme } from '../../context/themeContext';
+import Image from 'next/image';
+import axios from 'axios';
 
 const Cards = ({item, setSelect, setModal}) => {
 
 
   const theme = useTheme()
 
-  const [imgProject, setImgProject] = useState(null)
+  const [imgProject, setImgProject] = useState("")
 
   // Format currency Euro
   let currencyEuro = new Intl.NumberFormat('de-DE', { style : 'currency', currency: 'EUR'})
@@ -33,7 +34,7 @@ const Cards = ({item, setSelect, setModal}) => {
   return (
     <CardItem onClick={() => handleSelect(setSelect, setModal, item)} theme={theme}>
           <CardHeader>
-            <img src={imgProject} alt='project'/>
+            <Image src={imgProject} alt='project' width={200} height={200} />
           </CardHeader>
 
           <CardBody>

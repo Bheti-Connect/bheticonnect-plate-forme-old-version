@@ -1,10 +1,17 @@
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faBell, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import Image from 'next/image'
+import Verified from '../assets/images/profile_verified.png'
+import { useRouter } from 'next/router';
 
 
 const Greeting = () => {
+
+    const [name, setName] = useState('');
+
+    const router = useRouter();
 
     const day = new Date();
     const hourNow = day.getHours();
@@ -20,22 +27,33 @@ const Greeting = () => {
     {"notification" : "Pitch deck 7", "time": "25/12/2025 à 12:32"},
 ])
 
-
 const handle = (notif) => {
     console.log(notif)
     }
 
     let greet = ''
 
-    if ((hourNow > 18) && (hourNow < 24)) {
-        greet = "👍🏾 Bonsoir";
+    if ((hourNow > 17) && (hourNow < 24)) {
+        greet = "Bonsoir";
     }   else if ((hourNow > 12) && (hourNow < 18))  {
-        greet = "😏 Bon après-midi";
+        greet = "Bon après-midi";
     }   else if ((hourNow > 0) && (hourNow < 13))  {
         greet = "🥳 Bonjour";
     } else {
-        greet = " Bienvenue"
+        greet = " Bienvenue";
     }
+
+    useEffect(() => {
+        // Perform localStorage action
+        //Retrieve connected user firstName
+        
+        // const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+        // const fullName = usrLocalInfo.data.name.split(' ');
+        // const firstName = fullName[0];
+
+        const usrLocalInfo = JSON.parse(localStorage.getItem('user-info'));
+        setName(usrLocalInfo.data?.name)
+        }, [])
 
 
     const toggleMenu = () => {
@@ -49,20 +67,23 @@ const handle = (notif) => {
         }
         
     }
-
-
-
-
     return (
         <GreetMe>
             <div className='greeting_div'>
-                <h5>{greet}, Richard</h5>
+                <h5>
+                    {greet}, {name.split(' ')[0]}
+                    
+                </h5>
+                <Image
+                    className='verified'
+                    src={Verified} 
+                    alt='' 
+                />
             </div>
             <div className='briefcase_div'>
                 <span className='first' onClick={toggleMenu}>
                     <FontAwesomeIcon icon={faBriefcase} className='icon briefcase' />
                     <span className='notification_point'>5</span>
-
 
                     {/* List notification */}
                     <ul className="hide_menu">
@@ -79,7 +100,10 @@ const handle = (notif) => {
                     <FontAwesomeIcon icon={faBell} className='icon bell' />
                 </span>
                 <span>
-                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' />
+                    <FontAwesomeIcon icon={faPowerOff} className='icon power_off' onClick={() => {
+                        localStorage.removeItem('user-info');
+                        router.push('/');
+                    }} />
                 </span>
             </div>
         </GreetMe>
@@ -87,9 +111,10 @@ const handle = (notif) => {
 }
 
 const GreetMe = styled.div`
-position: absolute;
-right: 20px;
-width: 400px;
+position: relative;
+margin-right: 2% ;
+float: right;
+width: 450px;
 height: 40px;
 padding-left: 20px;
 background-color: #091a2b;
@@ -98,14 +123,21 @@ box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 border-radius: 40px;
 margin-bottom: 1%;
 display: flex;
-    .greeting_div{
+.greeting_div{
+        display: flex;
         margin-top: -10px;
-        width: 80%;
+        width: 100%;
+        .verified{
+            position: relative;
+            margin-top: 15px ;
+            height: 25px;
+            width: 25px;
+        }
     }
     h5 {
         position: relative;
         font-weight: 700;
-        width: 80%;
+        width: 60%;
     }
     .briefcase_div{
         display: inline;
@@ -125,7 +157,6 @@ display: flex;
         span + span {
             margin-left: 13px;
         }
-
         .notification_point{
             position: absolute;
             height: 15px;
@@ -140,13 +171,10 @@ display: flex;
             text-align: center;
             user-select: none;
         }
-
         .first > svg:hover ~ .notification_point {
             animation-name: bounce;
             animation-duration: 1s;
         }
-
-
         @keyframes bounce {
         0%, 20%, 53%, 80%, 100% {
         transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -164,9 +192,6 @@ display: flex;
         transform: translate3d(0,-4px,0);
         }
         }
-
-
-
         .first{
             .menu{
             position: absolute;
@@ -180,12 +205,10 @@ display: flex;
             z-index: 999;
             user-select: none;
             }
-
             .hide_menu{
                 display: none;
             }
             
-
             .menu:before{
             position: absolute;
             content: '';
@@ -197,8 +220,6 @@ display: flex;
             transform: rotate(45deg);
             z-index: -1;
             }
-
-
             .menu li a:before{
             position: absolute;
             content: '';
@@ -209,8 +230,6 @@ display: flex;
             left: 14px;
             margin-top: 8px;
             }
-
-
             .menu li{
             display: flex;
             line-height: 20px;
@@ -218,24 +237,20 @@ display: flex;
             cursor: pointer;
             border-bottom: 1px solid rgba(0,0,0,0.2);
             justify-content: space-between;
-
             span{
                 color: white;
                 font-size: 10px;
             }
             }
-
             .menu li a{
             color: white;
             text-decoration: none;
             font-size: 14px;
             margin-left: -18px;
             }
-
             .menu li a:hover , .menu li label:hover{
             color: cyan;
             }
-
             .view_all span{
                 width: 100%;
                 margin:auto;
@@ -246,15 +261,12 @@ display: flex;
                 padding: 5px;
                 font-weight: 700;
                 border-top: 1px gray solid;
-
                 &:hover{
                     color: cyan;
                 }
             }
         }
-
-
     }
 `
 
-export default Greeting
+export default Greeting;

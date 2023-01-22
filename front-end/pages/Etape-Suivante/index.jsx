@@ -7,7 +7,7 @@ import bhetiLogo from '../../assets/images/logoBackground.png'
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import AdditionalInfo from './AdditionalInfo'
 const notify = (e, router) => {
     e.preventDefault();
 
@@ -30,6 +30,15 @@ const notify = (e, router) => {
             if(data.data) {
                 if(data.data.role == 'entrepreneur') {
                     router.push('/Entrepreneur/Accueil');
+                    let user = JSON.parse(localStorage.getItem('user-info'));
+                    user = {
+                        ...user,
+                        data: {
+                            ...user.data,
+                            role: 'entrepreneur'
+                        }
+                    }
+                    localStorage.setItem('user-info',JSON.stringify(user));
                 }
             }
         }
@@ -82,16 +91,12 @@ const index = () => {
                         <Components.Paragraph>
                             Cher Investisseur, merci de compléter les informations supplémentaire sur vous et votre entreprise afin d'accéder à la plate-forme.
                         </Components.Paragraph>
-                        <Components.Input type='text' placeholder='Votre fonction' />
-                        <Components.Input type='text' placeholder="Nom de votre fonds d'investissement" />
-                        <Components.Input type='text' placeholder='Website' />
+                        <AdditionalInfo />
                     </Components.Form>
                 </Components.QuestionInfo>
 
                 <Components.OptionChoice moreInfo={moreInfo}>
                     <Components.Form>
-                        
-
                         <Components.Title>Vous êtes ?</Components.Title>
                             <Components.Paragraph>
                                 Choisissez une option ci-dessous pour accédez  à la plate-forme.
@@ -119,7 +124,7 @@ const index = () => {
                         </Components.LeftOverlayPanel>
                         <Components.RightOverlayPanel moreInfo={moreInfo}>
                             <ImageDiv>
-                                <Image className='bheti_image' src={bhetiLogo} />
+                                <Image className='bheti_image' src={bhetiLogo} alt='bheti connect logo'/>
                             </ImageDiv>
                         </Components.RightOverlayPanel>
                     </Components.Overlay>
