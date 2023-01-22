@@ -14,26 +14,38 @@ const PitchDeck = () => {
             <PitchDeckContainer>
 
                 <Investors>
-                    <div className="">
-                        <h4>Investisseur</h4>
+                    <div className="title">
+                        <h3>Investisseur</h3>
                         
                     </div>
-                    <div>
-                    <div className="individual-user">
+                    <div className="small-container">
+                        <div className="individual-user">
                             <Image className="profile_pic"  src={user}  alt='user icon'/>
                             <h4>Richard Nkulu</h4>
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic" src={user}  alt='user icon'/>
-                            <h4>Will Smith</h4>
+                            <h4>Thomas Sowell</h4>
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic"  src={user}  alt='user icon'/>
                             <h4>Joseph Mobutu</h4>
                         </div>
-                        <div>
+                        <div className="individual-user">
                             <Image className="profile_pic" src={user}  alt='user icon' />
                             <h4>Patrice Lumumba</h4>
+                        </div>
+                        <div className="individual-user">
+                            <Image className="profile_pic"  src={user}  alt='user icon'/>
+                            <h4>Cheikh Anta Diop</h4>
+                        </div>
+                        <div className="individual-user">
+                            <Image className="profile_pic" src={user}  alt='user icon' />
+                            <h4>Tata Madiba</h4>
+                        </div>
+                        <div className="individual-user">
+                            <Image className="profile_pic"  src={user}  alt='user icon'/>
+                            <h4>Kwame Nkrumah</h4>
                         </div>
                     </div>
 
@@ -94,15 +106,27 @@ const Investors = styled.div`
     width: 300px;
     background: #FFF;
     height: 60vh;
-    border-radius: 30px ;
-    h4 {
-        margin-left: 10% ;
+    border-radius: 30px;
+    h3{
+        margin-left: 10%;
+
     }
-    div{
-        width: 20vw;
-        .profile_pic{
-            width: 20px;
-            height: 20px;
+    h4 {
+        margin-left: 7%;
+        margin-top: 8px  ;
+    }
+    .small-container{
+        margin-top: 40px;
+        .individual-user{
+            width: 15vw;
+            display: flex;
+            margin: auto;
+            margin-left: -90px;
+            margin-top: 15px ;
+            .profile_pic{
+                width: 30px;
+                height: 30px;
+            }
         }
     }
 `
