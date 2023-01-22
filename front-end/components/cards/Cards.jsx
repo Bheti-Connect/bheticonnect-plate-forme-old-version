@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { handleSelect } from '../../utils/FunctionsComponent';
 import { useTheme } from '../../context/themeContext';
 import Image from 'next/image';
+import axios from 'axios';
 
 const Cards = ({item, setSelect, setModal}) => {
 
@@ -16,7 +17,12 @@ const Cards = ({item, setSelect, setModal}) => {
 
   // Generate image
   const handleImage = () => {
-    setImgProject("https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`)
+    let source = "https://" + `picsum.photos/id/${Math.floor(Math.random() * 200)}/200/300`;
+    axios.get(source).then((res) => {
+      setImgProject(source)
+    }).catch((error) => {
+      setImgProject("https://picsum.photos/id/10/200/300")
+    })
   }
 
   useEffect(() => {
