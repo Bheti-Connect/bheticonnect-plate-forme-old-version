@@ -16,13 +16,36 @@ const Greeting = () => {
 
     // notification
     const [data, setData] = useState([
-    {"notification" : "Pitch deck 1", "date": "09/12/1022", "time": "12:00", "new": true},
-    {"notification" : "Pitch deck 2", "date": "01/12/2002", "time": "07:25", "new": true},
-    {"notification" : "Pitch deck 3", "date": "05/12/1995", "time": "12:03", "new": true},
-    {"notification" : "Pitch deck 4", "date": "15/12/2022", "time": "15:32", "new": false},
-    {"notification" : "Pitch deck 5", "date": "03/12/2030", "time": "12:10", "new": false},
-    {"notification" : "Pitch deck 6", "date": "02/01/2023", "time": "20:32", "new": false},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14", "new": false},
+    {"notification" : "Pitch deck 1", "date": "09/12/1022", "time": "12:00"},
+    {"notification" : "Pitch deck 2", "date": "01/12/2002", "time": "07:25"},
+    {"notification" : "Pitch deck 3", "date": "05/12/1995", "time": "12:03"},
+    {"notification" : "Pitch deck 4", "date": "15/12/2022", "time": "15:32"},
+    {"notification" : "Pitch deck 5", "date": "03/12/2030", "time": "12:10"}, 
+    {"notification" : "Pitch deck 6", "date": "02/01/2023", "time": "20:32"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
+    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
 ])
 
 const handle = (notif) => {
@@ -78,8 +101,8 @@ const handle = (notif) => {
                     {/* List notification */}
                     <ul className="hide_menu">
                         {
-                        data.sort((a, b) => Date.parse(a.date) - Date.parse(b.date)).map((item, index) => (
-                            item.new == true ? (<li key={index} onClick={() => handle(item)}><a href='#' className='new_notification' >{item.notification}</a> <span>{item.time}</span></li>) : (<li key={index} onClick={() => handle(item)}><a href='#' >{item.notification}</a> <span>{item.time}</span></li>)
+                        data.map((item, index) => (
+                            <li key={index} onClick={() => handle(item)}><a href='#' className='new_notification' >{item.notification}</a> <span>{item.time}</span></li>
                         ))
                         }
                         <li className='view_all'><span>Toutes les notifications</span></li>
@@ -182,11 +205,15 @@ display: flex;
             list-style: none;
             top: 41px;
             right: 97px;
-            width: 220%;
+            width: 250%;
+            height: 280px;
             border-radius: 10px;
             display: block;
             z-index: 999;
             user-select: none;
+            overflow: hidden;
+            overflow-y: scroll;
+
             }
             .hide_menu{
                 display: none;
