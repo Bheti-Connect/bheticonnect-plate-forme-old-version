@@ -37,16 +37,12 @@ const PitchDeck = () => {
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic"  src={user}  alt='user icon'/>
-                            <h4>Aly</h4>
+                            <h4>Kwame Nkrumah</h4>
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic" src={user}  alt='user icon' />
                             <h4>Tata Madiba</h4>
                         </div>
-                        {/* <div className="individual-user">
-                            <Image className="profile_pic"  src={user}  alt='user icon'/>
-                            <h4>Kwame Nkrumah</h4>
-                        </div> */}
                     </div>
 
                 </Investors>
