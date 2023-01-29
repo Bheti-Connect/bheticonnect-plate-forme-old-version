@@ -30,6 +30,9 @@
     "react-select": "^5.7.0",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
-    "sweetalert2": "^11.6.16"
+    "sweetalert2": "^11.4.8"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
   }
 }

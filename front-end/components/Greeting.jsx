@@ -20,49 +20,27 @@ const Greeting = () => {
     {"notification" : "Pitch deck 2", "date": "01/12/2002", "time": "07:25"},
     {"notification" : "Pitch deck 3", "date": "05/12/1995", "time": "12:03"},
     {"notification" : "Pitch deck 4", "date": "15/12/2022", "time": "15:32"},
-    {"notification" : "Pitch deck 5", "date": "03/12/2030", "time": "12:10"}, 
+    {"notification" : "Pitch deck 5", "date": "03/12/2030", "time": "12:10"},
     {"notification" : "Pitch deck 6", "date": "02/01/2023", "time": "20:32"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
-    {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
     {"notification" : "Pitch deck 7", "date": "25/12/2025", "time": "05:14"},
 ])
 
-const handle = (notif) => {
-    console.log(notif)
+const handle = (e) => {
+    e.preventDefault()
+    console.log(e.target.classList.remove("new_notification"))
     }
 
-    let greet = ''
+let greet = ''
 
-    if ((hourNow > 18) && (hourNow < 24)) {
-        greet = "👍🏾 Bonsoir";
-    }   else if ((hourNow > 12) && (hourNow < 18))  {
-        greet = "😏 Bon après-midi";
-    }   else if ((hourNow > 0) && (hourNow < 13))  {
-        greet = "🥳 Bonjour";
-    } else {
-        greet = " Bienvenue";
-    }
+if ((hourNow > 18) && (hourNow < 24)) {
+    greet = "👍🏾 Bonsoir";
+}   else if ((hourNow > 12) && (hourNow < 18))  {
+    greet = "😏 Bon après-midi";
+}   else if ((hourNow > 0) && (hourNow < 13))  {
+    greet = "🥳 Bonjour";
+} else {
+    greet = " Bienvenue";
+}
 
     useEffect(() => {
         // Perform localStorage action
@@ -102,7 +80,7 @@ const handle = (notif) => {
                     <ul className="hide_menu">
                         {
                         data.map((item, index) => (
-                            <li key={index} onClick={() => handle(item)}><a href='#' className='new_notification' >{item.notification}</a> <span>{item.time}</span></li>
+                            <li key={index} onClick={(e) => handle(e)}><a href='#' className='new_notification'>{item.notification}</a> <span>{item.time}</span></li>
                         ))
                         }
                         <li className='view_all'><span>Toutes les notifications</span></li>
