@@ -17,7 +17,7 @@ const Accueil = () => {
     useEffect(() => {
         const waiting = setTimeout(() => {
             setLoad(false)
-        }, 4000);
+        }, 5000);
   
         return () => {
           clearTimeout(waiting)
