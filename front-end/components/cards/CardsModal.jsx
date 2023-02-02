@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useTheme } from '../../context/themecontext';
+import { useTheme } from '../../context/themeContext';
 import { closeModal } from '../../utils/FunctionsComponent';
 import Image from 'next/image';
 

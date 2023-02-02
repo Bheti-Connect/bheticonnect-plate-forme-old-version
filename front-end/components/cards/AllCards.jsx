@@ -6,7 +6,7 @@ import SearchFilter from './../SearchFilter/SearchFilter';
 import Cards from './Cards';
 import CardsModal from './CardsModal';
 import LoaderCards from './LoaderCards';
-import { useTheme } from '../../context/themecontext';
+import { useTheme } from '../../context/themeContext';
 import { axios_get, axios_post } from '../../utils/FunctionsComponent';
 import LinksAPI from '../../utils/LinksAPI';
 //import axios from 'axios';
