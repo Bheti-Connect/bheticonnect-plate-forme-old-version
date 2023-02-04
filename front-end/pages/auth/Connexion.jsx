@@ -112,7 +112,7 @@ function Connexion() {
         if (!regex.test(password)) {
             err = {
                 ...err,
-                password: 'Password must contain minimum eight characters, at least one uppercase letter and one number'
+                password: 'Le mot de passe doit contenir au moins 8 caractères, dont au moins une lettre majuscule et un chiffre.'
             }
             setErrors(err);
             return;
@@ -120,7 +120,7 @@ function Connexion() {
         if (password != confirmPass) {
             err = {
                 ...err,
-                password: 'Password does not matches with the confirm password'
+                password: 'Le mot de passe de confirmation ne correspond pas au mot de passe saisi précédemment.'
             }
             setErrors(err);
             return;

@@ -37,15 +37,11 @@ const PitchDeck = () => {
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic"  src={user}  alt='user icon'/>
-                            <h4>Cheikh Anta Diop</h4>
+                            <h4>Kwame Nkrumah</h4>
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic" src={user}  alt='user icon' />
                             <h4>Tata Madiba</h4>
-                        </div>
-                        <div className="individual-user">
-                            <Image className="profile_pic"  src={user}  alt='user icon'/>
-                            <h4>Kwame Nkrumah</h4>
                         </div>
                     </div>
 
@@ -93,26 +89,28 @@ const Container = styled.section`
     }
 `
 const PitchDeckContainer = styled.div`
+    position: relative ;
+    margin: auto;
     display: flex;
-    position: relative;
     top: 5vh;
     z-index: -10 ;
     div + div {
-        margin-left: 100px ;
+        margin-left: 13vw ;
     }
 `
 
 const Investors = styled.div`
+    position: relative ;
+    margin: auto;
     width: 300px;
     background: #FFF;
     height: 60vh;
     border-radius: 30px;
     h3{
         margin-left: 10%;
-
     }
     h4 {
-        margin-left: 7%;
+        margin-left: 2vw;
         margin-top: 8px  ;
     }
     .small-container{
@@ -121,7 +119,7 @@ const Investors = styled.div`
             width: 15vw;
             display: flex;
             margin: auto;
-            margin-left: -90px;
+            margin-left: -12vw;
             margin-top: 15px ;
             .profile_pic{
                 width: 30px;
@@ -132,7 +130,9 @@ const Investors = styled.div`
 `
 
 const Decks = styled.div`
-width: 300px;
+    position: relative;
+    margin: auto;   
+    width: 300px;
     background: #FFF;
     height: 60vh;
     border-radius: 30px ;

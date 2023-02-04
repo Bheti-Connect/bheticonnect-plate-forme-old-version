@@ -9,10 +9,6 @@ import Image from 'next/image';
 
 const NavMenu = () => {
 
-
-
-
-
     return (
     <Container>
         <ul>
