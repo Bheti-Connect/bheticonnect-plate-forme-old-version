@@ -44,14 +44,17 @@ const PitchDeck = () => {
                             <h4>Tata Madiba</h4>
                         </div>
                     </div>
-
                 </Investors>
                 <Decks>
-                    Bonjour Moi, c'est Channing
+                    <div>
+                        Richard Nkulu
+                    </div>
                 </Decks>
 
                 <Companies>
-                    Bonjour, il y a plusieurs façon de 
+                    <div>
+                        Bonjour, il y a plusieurs façon de 
+                    </div>
                 </Companies>
 
             </PitchDeckContainer>
