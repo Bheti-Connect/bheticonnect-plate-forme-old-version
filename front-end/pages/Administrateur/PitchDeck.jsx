@@ -52,7 +52,9 @@ const PitchDeck = () => {
                 </Decks>
 
                 <Companies>
-                    Bonjour, il y a plusieurs façon de 
+                    <div>
+                        Bonjour, il y a plusieurs façon de 
+                    </div>
                 </Companies>
 
             </PitchDeckContainer>
