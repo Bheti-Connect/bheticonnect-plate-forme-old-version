@@ -46,7 +46,9 @@ const PitchDeck = () => {
                     </div>
                 </Investors>
                 <Decks>
-                    Bonjour Moi, c'est Channing
+                    <div>
+                        Richard Nkulu
+                    </div>
                 </Decks>
 
                 <Companies>
