@@ -17,12 +17,10 @@ const Accueil = () => {
     return (
     <Container>
         <HeaderAdmin />
-
         <ChartsAndGraphs>
             <BarChart />
             <PieChart />
         </ChartsAndGraphs>
-
     </Container>
     )
 }
