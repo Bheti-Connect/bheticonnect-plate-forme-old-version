@@ -15,7 +15,7 @@ const PitchDeck = () => {
 
                 <Investors>
                     <div className="title">
-                        <h3>Investisseur</h3>
+                        <h3>Investisseurs</h3>
                         
                     </div>
                     <div className="small-container">
@@ -46,8 +46,14 @@ const PitchDeck = () => {
                     </div>
                 </Investors>
                 <Decks>
+                    <div className="deck-header">
+                        <Image className="user_img"  src={user}  alt='user icon'/>
+                        <h4 className="current_usr_name">Richard Nkulu</h4>
+                    </div>
                     <div>
-                        Richard Nkulu
+                        <div>
+                            
+                        </div>
                     </div>
                 </Decks>
 
@@ -139,6 +145,22 @@ const Decks = styled.div`
     background: #FFF;
     height: 60vh;
     border-radius: 30px ;
+    .deck-header{
+        position: relative;
+        width: 50%;
+        margin: auto;
+        img {
+            position: relative;
+            top: 5px;
+            width: 40%;
+            height: 40%;
+            margin: 0px 30px ;
+        }
+        .current_usr_name{
+            margin: auto;
+        }
+        
+    }
 
 `
 
