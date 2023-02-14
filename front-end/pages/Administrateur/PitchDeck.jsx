@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Image from 'next/image'
 import user from '../../assets/images/user-image.png'
+import send from '../../assets/images/send.png'
+import DragDropFiles from "./DragDropFiles";
+
 
 const PitchDeck = () => {
     return (
@@ -56,7 +59,12 @@ const PitchDeck = () => {
                             <span className="status">or</span>
                         </div>
                         <div className="lower_elements">
-
+                            <DragDropFiles />
+                            <div className="send_div">
+                                <span className="send_span" >
+                                    <Image className="send_image" src={send} alt="send icon" />
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </Decks>
@@ -168,7 +176,7 @@ const Decks = styled.div`
     }
     .deposit_container{
         background: #B6C4D6;
-        height: 150px;
+        height: 300px;
         margin: auto;
         top: 40px ;
         position: relative;
@@ -191,6 +199,31 @@ const Decks = styled.div`
                 left: 10px;
             }
         }
+        .lower_elements{
+            position: relative;
+            width: 80%;
+            align-items: center;
+            margin: auto;
+            .send_div{
+                position: relative;
+                left: 50px;
+                .send_span{
+                    border-radius: 100%;
+                    bottom: -190px;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #69C848;
+                    position: absolute;
+                    align-items: center;
+                .send_image{
+                    position: relative;
+                    height: 25px;
+                    width: 25px;
+                    margin: 7px;
+                }
+            }
+            }
+        }
     }
 `
 
@@ -198,7 +231,7 @@ const Companies = styled.div`
     width: 300px;
     background: #FFF;
     height: 60vh;
-    border-radius: 30px ;
+    border-radius: 30px;
 
 `
 
