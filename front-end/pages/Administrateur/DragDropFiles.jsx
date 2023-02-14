@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
-
 
 
 const DragDropFiles = () => {
     const [files, setFiles ] = useState(null)
+    const inputRef = useRef();
 
-    
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    }
+    const handleDrop = (e) => {
+        e.preventDefault();
+        setFiles(e.dataTransfer.files);
+    }
+
+    if(files) return (
+        <div className="uploads">
+            <ul>
+                {Array.from(files).map((file, idx) => <li key={idx}>{file.name}</li>)}
+            </ul>
+        </div>
+    )
+
     return (
         <>
             {
@@ -18,7 +33,14 @@ const DragDropFiles = () => {
                     >
                         <h5>Glisser & déposer le fichier ici</h5>
                         <h5>or</h5>
-                        <button>Select files</button>
+                        <input 
+                            type="file"
+                            multiple
+                            onChange={(e) => setFiles(e.target.files)}
+                            hidden
+                            ref={inputRef}
+                        />
+                        <button onClick={() => inputRef.current.click()}>Select files</button>
                     </DragDrop>
                 )
             }
@@ -31,7 +53,7 @@ const DragDrop = styled.div`
     border: 2.4px dashed #F3F0E5;
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 100px;
     justify-content: center;
     top: 10vh;
     padding: 20px;
@@ -40,6 +62,7 @@ const DragDrop = styled.div`
 
     button{
         padding: 9px;
+        cursor: pointer;
     }
 `
 
