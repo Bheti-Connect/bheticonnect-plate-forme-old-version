@@ -50,9 +50,13 @@ const PitchDeck = () => {
                         <Image className="user_img"  src={user}  alt='user icon'/>
                         <h4 className="current_usr_name">Richard Nkulu</h4>
                     </div>
-                    <div>
-                        <div>
-                            
+                    <div className="deposit_container">
+                        <div className="upper_elements">
+                            <h5 className="project_name">Nom du projet</h5>
+                            <span className="status">or</span>
+                        </div>
+                        <div className="lower_elements">
+
                         </div>
                     </div>
                 </Decks>
@@ -78,7 +82,6 @@ const Container = styled.section`
     .left {
         ul{
             list-style-type: none;
-
             .head-text{
                 font-family: 'Inter', sans-serif;
                 font-style: normal;
@@ -104,7 +107,7 @@ const PitchDeckContainer = styled.div`
     top: 5vh;
     z-index: -10 ;
     div + div {
-        margin-left: 13vw ;
+        margin-left: 10vw;
     }
 `
 
@@ -119,16 +122,17 @@ const Investors = styled.div`
         margin-left: 10%;
     }
     h4 {
-        margin-left: 2vw;
+        color: #616161;
+        margin-left: 1vw;
         margin-top: 8px  ;
     }
     .small-container{
         margin-top: 40px;
         .individual-user{
-            width: 15vw;
+            width: 14vw;
             display: flex;
             margin: auto;
-            margin-left: -12vw;
+            margin-left: -9vw;
             margin-top: 15px ;
             .profile_pic{
                 width: 30px;
@@ -141,7 +145,7 @@ const Investors = styled.div`
 const Decks = styled.div`
     position: relative;
     margin: auto;   
-    width: 300px;
+    width: 23vw;
     background: #FFF;
     height: 60vh;
     border-radius: 30px ;
@@ -152,16 +156,42 @@ const Decks = styled.div`
         img {
             position: relative;
             top: 5px;
-            width: 40%;
-            height: 40%;
-            margin: 0px 30px ;
+            width: 23%;
+            height: 23%;
+            margin: auto;
         }
         .current_usr_name{
+            color: #B1B2B4;
             margin: auto;
         }
         
     }
-
+    .deposit_container{
+        background: #B6C4D6;
+        height: 150px;
+        margin: auto;
+        top: 40px ;
+        position: relative;
+        width: 19.5vw;
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        .upper_elements{
+            .status{
+                color: red;
+                position: absolute;
+                background: red;
+                border-radius: 50%;
+                width: 20px;
+                top: -3px;
+                right: -3px;
+            }
+            .project_name{
+                position: absolute;
+                left: 10px;
+            }
+        }
+    }
 `
 
 const Companies = styled.div`
