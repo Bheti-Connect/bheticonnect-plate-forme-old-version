@@ -114,7 +114,7 @@ const GreetMe = styled.div`
 position: relative;
 margin-right: 2% ;
 float: right;
-width: 450px;
+width: 480px;
 height: 40px;
 padding-left: 20px;
 background-color: #091a2b;

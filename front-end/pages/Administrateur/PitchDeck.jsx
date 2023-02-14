@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Image from 'next/image'
 import user from '../../assets/images/user-image.png'
+import send from '../../assets/images/send.png'
+import DragDropFiles from "./DragDropFiles";
+
 
 const PitchDeck = () => {
     return (
@@ -15,7 +18,7 @@ const PitchDeck = () => {
 
                 <Investors>
                     <div className="title">
-                        <h3>Investisseur</h3>
+                        <h3>Investisseurs</h3>
                         
                     </div>
                     <div className="small-container">
@@ -46,8 +49,23 @@ const PitchDeck = () => {
                     </div>
                 </Investors>
                 <Decks>
-                    <div>
-                        Richard Nkulu
+                    <div className="deck-header">
+                        <Image className="user_img"  src={user}  alt='user icon'/>
+                        <h4 className="current_usr_name">Richard Nkulu</h4>
+                    </div>
+                    <div className="deposit_container">
+                        <div className="upper_elements">
+                            <h5 className="project_name">Nom du projet</h5>
+                            <span className="status">or</span>
+                        </div>
+                        <div className="lower_elements">
+                            <DragDropFiles />
+                            <div className="send_div">
+                                <span className="send_span" >
+                                    <Image className="send_image" src={send} alt="send icon" />
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </Decks>
 
@@ -72,7 +90,6 @@ const Container = styled.section`
     .left {
         ul{
             list-style-type: none;
-
             .head-text{
                 font-family: 'Inter', sans-serif;
                 font-style: normal;
@@ -98,7 +115,7 @@ const PitchDeckContainer = styled.div`
     top: 5vh;
     z-index: -10 ;
     div + div {
-        margin-left: 13vw ;
+        margin-left: 10vw;
     }
 `
 
@@ -113,16 +130,17 @@ const Investors = styled.div`
         margin-left: 10%;
     }
     h4 {
-        margin-left: 2vw;
+        color: #616161;
+        margin-left: 1vw;
         margin-top: 8px  ;
     }
     .small-container{
         margin-top: 40px;
         .individual-user{
-            width: 15vw;
+            width: 14vw;
             display: flex;
             margin: auto;
-            margin-left: -12vw;
+            margin-left: -9vw;
             margin-top: 15px ;
             .profile_pic{
                 width: 30px;
@@ -135,18 +153,85 @@ const Investors = styled.div`
 const Decks = styled.div`
     position: relative;
     margin: auto;   
-    width: 300px;
+    width: 23vw;
     background: #FFF;
     height: 60vh;
     border-radius: 30px ;
-
+    .deck-header{
+        position: relative;
+        width: 50%;
+        margin: auto;
+        img {
+            position: relative;
+            top: 5px;
+            width: 23%;
+            height: 23%;
+            margin: auto;
+        }
+        .current_usr_name{
+            color: #B1B2B4;
+            margin: auto;
+        }
+        
+    }
+    .deposit_container{
+        background: #B6C4D6;
+        height: 300px;
+        margin: auto;
+        top: 40px ;
+        position: relative;
+        width: 19.5vw;
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        .upper_elements{
+            .status{
+                color: red;
+                position: absolute;
+                background: red;
+                border-radius: 50%;
+                width: 20px;
+                top: -3px;
+                right: -3px;
+            }
+            .project_name{
+                position: absolute;
+                left: 10px;
+            }
+        }
+        .lower_elements{
+            position: relative;
+            width: 80%;
+            align-items: center;
+            margin: auto;
+            .send_div{
+                position: relative;
+                left: 50px;
+                .send_span{
+                    border-radius: 100%;
+                    bottom: -190px;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #69C848;
+                    position: absolute;
+                    align-items: center;
+                .send_image{
+                    position: relative;
+                    height: 25px;
+                    width: 25px;
+                    margin: 7px;
+                }
+            }
+            }
+        }
+    }
 `
 
 const Companies = styled.div`
     width: 300px;
     background: #FFF;
     height: 60vh;
-    border-radius: 30px ;
+    border-radius: 30px;
 
 `
 
