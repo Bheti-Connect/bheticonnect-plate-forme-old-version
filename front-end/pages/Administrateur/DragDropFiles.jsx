@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
 
-
 const DragDropFiles = () => {
     const [files, setFiles ] = useState(null)
     const inputRef = useRef();
@@ -40,7 +39,7 @@ const DragDropFiles = () => {
                             hidden
                             ref={inputRef}
                         />
-                        <button onClick={() => inputRef.current.click()}>Select files</button>
+                        <button onClick={() => inputRef.current.click()}>Select n</button>
                     </DragDrop>
                 )
             }
@@ -57,7 +56,7 @@ const DragDrop = styled.div`
     justify-content: center;
     top: 10vh;
     padding: 20px;
-    position: relative;
+    position: absolute;
     width: 15vw;
 
     button{
