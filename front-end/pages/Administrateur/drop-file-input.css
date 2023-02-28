@@ -2,14 +2,13 @@
     position: relative;
     width: 400px;
     height: 200px;
-    border: 2px dashed var(--border-color);
+    border: 2px dashed #4267b2;
     border-radius: 20px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: var(--input-bg);
+    background-color: #f5f8ff;
 }
 
 .drop-file-input input {
@@ -29,7 +28,7 @@
 
 .drop-file-input__label {
     text-align: center;
-    color: var(--txt-second-color);
+    color: #ccc;
     font-weight: 600;
     padding: 10px;
 }

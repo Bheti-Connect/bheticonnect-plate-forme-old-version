@@ -2,10 +2,13 @@ import styled from "styled-components";
 import Image from 'next/image'
 import user from '../../assets/images/user-image.png'
 import send from '../../assets/images/send.png'
-import DragDropFiles from "./DragDropFiles";
+import DropFileInput from "./DropFileInput";
 
 
 const PitchDeck = () => {
+    const onFileChange = (files) => {
+        console.log(files);
+    }
     return (
         <Container>
             <div className="left">
@@ -59,7 +62,9 @@ const PitchDeck = () => {
                             <span className="status">or</span>
                         </div>
                         <div className="lower_elements">
-                            <DragDropFiles />
+                            <DropFileInput
+                                onFileChange={(files) => onFileChange(files)}
+                            />
                             <div className="send_div">
                                 <span className="send_span" >
                                     <Image className="send_image" src={send} alt="send icon" />
@@ -175,7 +180,6 @@ const Decks = styled.div`
         
     }
     .deposit_container{
-        background: #B6C4D6;
         height: 300px;
         margin: auto;
         top: 40px ;
