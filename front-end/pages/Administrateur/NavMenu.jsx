@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router';
 import styled from 'styled-components'
 import Link from 'next/link'
 import logoBheti from './../../assets/images/footer-logo.png'
@@ -7,56 +8,64 @@ import { faGear, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { faUserTie, faMessage, faUserGroup, faFolder, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 
-const NavMenu = () => {
+const NavMenu = ({ children }) => {
+
+    const router = useRouter();
+    const { pathname } = router;
+
+    const showNavbar = pathname === '/Administrateur/Accueil' || pathname === '/Administrateur/PitchDeck' || pathname === '/Administrateur/Entrepreneur' || pathname === '/Administrateur/Investisseur' || pathname === '/Administrateur/Message' || pathname === '/Administrateur/Parametre' || pathname === '/Administrateur/Deconnexion';
 
     return (
-    <Container>
-        <ul>
-            <li>
-                <a className='logo' href="#">
-                    <Image src={logoBheti} alt='logo bheti' />
-                </a>
-            </li>
-            <li className='button afterLogo'>
-                <Link href="">
-                        <FontAwesomeIcon className='icon' icon={faHouse} />
-                        <span className="nav-item">Dashboard</span>
-                    
-                </Link>
-            </li>
-            <li  className='button'><a href="#">
-                <FontAwesomeIcon className='icon' icon={faUserGroup} />
-                <span className="nav-item">Entrepreneur</span>
-            </a></li>
-            <li  className='button'><a href="#">
-                <FontAwesomeIcon className='icon' icon={faUserTie} />
-                <span className="nav-item">Investisseur</span>
-            </a></li>
-            <li  className='button'><a href="#">
-            <FontAwesomeIcon className='icon' icon={faMessage} />
-                <span className="nav-item">Message</span>
-            </a></li>
-            <li className='button afterLogo'>
-                <Link href="/Administrateur/PitchDeck" caseSensitive={false}>
-                        <FontAwesomeIcon className='icon' icon={faFolder} />
-                        <span className="nav-item">Pitch Deck</span>
-                </Link>
-            </li>
-            <li  className='button'><a href="#" className='setting'>
-                <FontAwesomeIcon className='icon' icon={faGear} />
-                <span className="nav-item">Parametre</span>
-            </a></li>
-            <li  className='button'><a href="#" className='logout'>
-                <FontAwesomeIcon className='icon' icon={faRightFromBracket} />
-                <span className="nav-item">Deconnexion</span>
-            </a></li>
-        </ul>
-    </Container>
-  )
+        <div>
+            {showNavbar && (
+                <Container>
+                <ul>
+                    <li>
+                        <a className='logo' href="#">
+                            <Image src={logoBheti} alt='logo bheti' />
+                        </a>
+                    </li>
+                    <li className='button afterLogo'>
+                        <Link href="">
+                                <FontAwesomeIcon className='icon' icon={faHouse} />
+                                <span className="nav-item">Dashboard</span>
+                            
+                        </Link>
+                    </li>
+                    <li  className='button'><a href="#">
+                        <FontAwesomeIcon className='icon' icon={faUserGroup} />
+                        <span className="nav-item">Entrepreneur</span>
+                    </a></li>
+                    <li  className='button'><a href="#">
+                        <FontAwesomeIcon className='icon' icon={faUserTie} />
+                        <span className="nav-item">Investisseur</span>
+                    </a></li>
+                    <li  className='button'><a href="#">
+                    <FontAwesomeIcon className='icon' icon={faMessage} />
+                        <span className="nav-item">Message</span>
+                    </a></li>
+                    <li className='button afterLogo'>
+                        <Link href="/Administrateur/PitchDeck" caseSensitive={false}>
+                                <FontAwesomeIcon className='icon' icon={faFolder} />
+                                <span className="nav-item">Pitch Deck</span>
+                        </Link>
+                    </li>
+                    <li  className='button'><a href="#" className='setting'>
+                        <FontAwesomeIcon className='icon' icon={faGear} />
+                        <span className="nav-item">Parametre</span>
+                    </a></li>
+                    <li  className='button'><a href="#" className='logout'>
+                        <FontAwesomeIcon className='icon' icon={faRightFromBracket} />
+                        <span className="nav-item">Deconnexion</span>
+                    </a></li>
+                </ul>
+            </Container>
+            )}
+            
+        </div>
+    
+    )
 }
-
-
-
 
 // style CSS
 
