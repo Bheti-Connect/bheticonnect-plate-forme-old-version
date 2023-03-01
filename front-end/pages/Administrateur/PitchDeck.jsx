@@ -2,7 +2,9 @@ import styled from "styled-components";
 import Image from 'next/image'
 import user from '../../assets/images/user-image.png'
 import send from '../../assets/images/send.png'
-import DropFileInput from "./DropFileInput";
+
+// import DropFileInput from "./DropFileInput";
+import DropZone from "./DropZone";
 
 
 const PitchDeck = () => {
@@ -62,9 +64,7 @@ const PitchDeck = () => {
                             <span className="status">or</span>
                         </div>
                         <div className="lower_elements">
-                            <DropFileInput
-                                onFileChange={(files) => onFileChange(files)}
-                            />
+                            <DropZone />
                             <div className="send_div">
                                 <span className="send_span" >
                                     <Image className="send_image" src={send} alt="send icon" />
@@ -73,8 +73,8 @@ const PitchDeck = () => {
                         </div>
                     </div>
                 </Decks>
-
                 <Companies>
+
                     <div>
                         Bonjour, il y a plusieurs façon de 
                     </div>
@@ -136,8 +136,11 @@ const Investors = styled.div`
     }
     h4 {
         color: #616161;
+        background: #A9DFBF;
+        border-radius: 12px;
+        padding: 7px;
         margin-left: 1vw;
-        margin-top: 8px  ;
+        margin-top: 8px;
     }
     .small-container{
         margin-top: 40px;
@@ -216,7 +219,7 @@ const Decks = styled.div`
                     bottom: -190px;
                     width: 40px;
                     height: 40px;
-                    background-color: #69C848;
+                    background-color: #82E0AA;
                     position: absolute;
                     align-items: center;
                 .send_image{

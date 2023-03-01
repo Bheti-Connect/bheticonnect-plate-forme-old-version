@@ -56,12 +56,12 @@ const DropFileInput = props => {
                         {
                             fileList.map((item, index) => (
                                 <div key={index} className="drop_file_preview__item">
-                                    <Image src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
+                                    <Image className='image' src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
                                     <div className="drop_file_preview__item__info">
                                         <p>{item.name}</p>
                                         <p>{item.size}B</p>
                                     </div>
-                                    <span className="drop-file-preview__item__del" onClick={() => fileRemove(item)}>x</span>
+                                    <span className="drop_file_preview__item__del" onClick={() => fileRemove(item)}>x</span>
                                 </div>
                             ))
                         }
@@ -77,7 +77,7 @@ DropFileInput.propTypes = {
 }
 
 const DivStyled = styled.div`
-    osition: relative;
+    position: relative;
     width: 25vw;
     height: 20vh;
     border: 2px dashed #4267b2;
@@ -116,10 +116,11 @@ const DivStyled = styled.div`
 `
 
 const FilePreview = styled.div`
-        margin-top: 30px;
+    margin-top: 30px;
 
     p {
     font-weight: 500;
+    font-size: 15px;
 }
 
 .drop_file_preview__title {
@@ -127,14 +128,17 @@ const FilePreview = styled.div`
 }
 
 .drop_file_preview__item {
+    width: 25vw;
+    height: 7.3vh;
     position: relative;
     display: flex;
     margin-bottom: 10px;
-    background-color: #f5f8ff;
+    background-color: #D4E6F1;
     padding: 15px;
     border-radius: 20px;
-    .drop_file_preview__item img {
-    width: 50px;
+    .image {
+    width: 43px;
+    height: 47px;
     margin-right: 20px;
 }
 
@@ -145,9 +149,10 @@ const FilePreview = styled.div`
 }
 
 .drop_file_preview__item__del {
-    background-color: #fff;
-    width: 40px;
-    height: 40px;
+    background-color: #CB4335;
+    color: #FFF;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -162,7 +167,7 @@ const FilePreview = styled.div`
     transition: opacity 0.3s ease;
 }
 
-.drop_file_preview__item:hover .drop_file_preview__item__del {
+&:hover .drop_file_preview__item__del {
     opacity: 1;
 }
 
