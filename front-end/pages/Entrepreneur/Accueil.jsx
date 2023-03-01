@@ -8,7 +8,12 @@ import Footer from '../../components/Footer';
 import styled from 'styled-components';
 import SubTextEntrepreneur from '../../components/SubTextEntrepreneur';
 import Eligibility from '../../components/Eligibility';
+import DropFileInput from '../Administrateur/DropFileInput';
 const Accueil = () => {
+
+    const onFileChange = (files) => {
+        console.log(files);
+    }
     return (
         <Components.AccueilStyled>
         <div className='image_div'>
@@ -20,10 +25,10 @@ const Accueil = () => {
         <Components.WelcomeStyled>Bheti Connect Base </Components.WelcomeStyled>
         <Greeting />
         <SubTextEntrepreneur />
+        <DropFileInput 
+                            onFileChange={(files) => onFileChange(files)}
+        />
         <Eligibility />
-        {/* <FooterStyled className='footer'>
-            <Footer />
-        </FooterStyled> */}
     </Components.AccueilStyled>
     )
 }
