@@ -33,7 +33,7 @@ const DropFileInput = props => {
     }
     
     return (
-        <>
+        <Container>
             <DivStyled
                 ref={wrapperRef}
                 className="drop_file_input"
@@ -68,7 +68,7 @@ const DropFileInput = props => {
                     </FilePreview>
                 ) : null
             }
-        </>
+        </Container>
     );
 }
 
@@ -76,15 +76,25 @@ DropFileInput.propTypes = {
     onFileChange: PropTypes.func
 }
 
+const Container = styled.div`
+position: relative;
+display: block;
+align-items: center;
+margin: auto;
+
+`
+
 const DivStyled = styled.div`
     position: relative;
-    width: 15vw;
-    height: 17vh;
+    top: 6vh;
+    width: 19vw;
+    height: 17.5vh;
     border: 2px dashed #4267b2;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: auto;
     cursor: pointer;
 
     background-color: #f5f8ff;
@@ -129,16 +139,18 @@ const FilePreview = styled.div`
 }
 
 .drop_file_preview__item {
-    width: 22vw;
-    height: 7.3vh;
+    width: 21vw;
+    height: 6.3vh;
     position: relative;
     display: flex;
     margin-bottom: 10px;
     background-color: #D4E6F1;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
+    top: 6vh;
+    right: 10vw;
     .image {
-    width: 30px;
+    width: 32px;
     height: 35px;
     margin-right: 10px;
 }
@@ -159,7 +171,7 @@ const FilePreview = styled.div`
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

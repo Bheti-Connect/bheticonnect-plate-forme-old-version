@@ -73,7 +73,8 @@ const Container = styled.nav`
 position: absolute;
 top:0;
 bottom: 0;
-height: 100%;
+height: 101%;
+z-index: 10;
 left:0;
 background: #641C1C;
 width: 90px;

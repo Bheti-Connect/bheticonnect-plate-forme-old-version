@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from 'next/image'
 import user from '../../assets/images/user-image.png'
 import send from '../../assets/images/send.png'
-
+import sendPitch from './sendPitch'
 // import DropFileInput from "./DropFileInput";
 import DropZone from "./DropZone";
 import DropFileInput from "./DropFileInput";
@@ -12,6 +12,7 @@ const PitchDeck = () => {
     const onFileChange = (files) => {
         console.log(files);
     }
+    
     return (
         <Container>
             <div className="left">
@@ -25,12 +26,11 @@ const PitchDeck = () => {
                 <Investors>
                     <div className="title">
                         <h3>Investisseurs</h3>
-                        
                     </div>
                     <div className="small-container">
                         <div className="individual-user">
                             <Image className="profile_pic"  src={user}  alt='user icon'/>
-                            <h4>Richard Nkulu</h4>
+                            <span><h4>Richard Nkulu</h4></span>
                         </div>
                         <div className="individual-user">
                             <Image className="profile_pic" src={user}  alt='user icon'/>
@@ -69,7 +69,7 @@ const PitchDeck = () => {
                                 onFileChange={(files) => onFileChange(files)}
                             />
                             <div className="send_div">
-                                <span className="send_span" >
+                                <span className="send_span" onClick={sendPitch}>
                                     <Image className="send_image" src={send} alt="send icon" />
                                 </span>
                             </div>
@@ -139,11 +139,11 @@ const Investors = styled.div`
     }
     h4 {
         color: #616161;
-        background: #A9DFBF;
-        border-radius: 12px;
-        padding: 7px;
+        padding: 6px;
         margin-left: 1vw;
-        margin-top: 8px;
+        margin-top: 0px;
+        width: 100%;
+        align-item: center;
     }
     .small-container{
         margin-top: 40px;
@@ -157,6 +157,14 @@ const Investors = styled.div`
                 width: 30px;
                 height: 30px;
             }
+            span{
+                background: #A9DFBF;
+                border-radius: 15px;
+                height: 4vh;
+                width: 100%;
+                margin-left: 1vw;
+
+            }
         }
     }
 `
@@ -164,7 +172,7 @@ const Investors = styled.div`
 const Decks = styled.div`
     position: relative;
     margin: auto;   
-    width: 23vw;
+    width: 26vw;
     background: #FFF;
     height: 60vh;
     border-radius: 30px ;
@@ -186,11 +194,12 @@ const Decks = styled.div`
         
     }
     .deposit_container{
-        height: 300px;
+        height: 26vh;
         margin: auto;
         top: 40px ;
+        background: #9CCCE8;
         position: relative;
-        width: 19.5vw;
+        width: 23vw;
         border-bottom-right-radius: 15px;
         border-top-left-radius: 15px;
         border-bottom-left-radius: 15px;
@@ -211,7 +220,7 @@ const Decks = styled.div`
         }
         .lower_elements{
             position: relative;
-            width: 80%;
+            width: 100%;
             align-items: center;
             margin: auto;
             .send_div{
@@ -219,12 +228,14 @@ const Decks = styled.div`
                 left: 50px;
                 .send_span{
                     border-radius: 100%;
-                    bottom: -190px;
+                    bottom: -80px;
+                    right: 40px;
                     width: 40px;
                     height: 40px;
                     background-color: #82E0AA;
                     position: absolute;
                     align-items: center;
+                    cursor: pointer;
                 .send_image{
                     position: relative;
                     height: 25px;
