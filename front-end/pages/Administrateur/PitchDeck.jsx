@@ -5,6 +5,7 @@ import send from '../../assets/images/send.png'
 
 // import DropFileInput from "./DropFileInput";
 import DropZone from "./DropZone";
+import DropFileInput from "./DropFileInput";
 
 
 const PitchDeck = () => {
@@ -64,7 +65,9 @@ const PitchDeck = () => {
                             <span className="status">or</span>
                         </div>
                         <div className="lower_elements">
-                            <DropZone />
+                            <DropFileInput
+                                onFileChange={(files) => onFileChange(files)}
+                            />
                             <div className="send_div">
                                 <span className="send_span" >
                                     <Image className="send_image" src={send} alt="send icon" />
@@ -81,6 +84,7 @@ const PitchDeck = () => {
                 </Companies>
 
             </PitchDeckContainer>
+            
         </Container>
         
     )
@@ -88,7 +92,7 @@ const PitchDeck = () => {
 
 
 
-const Container = styled.section`
+const Container = styled.div`
     display: grid;
     margin-left: 8vw;
     margin-top: 2px;
@@ -118,7 +122,6 @@ const PitchDeckContainer = styled.div`
     margin: auto;
     display: flex;
     top: 5vh;
-    z-index: -10 ;
     div + div {
         margin-left: 10vw;
     }

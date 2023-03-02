@@ -26,7 +26,7 @@ const Accueil = () => {
         <Greeting />
         <SubTextEntrepreneur />
         <DropFileInput 
-                            onFileChange={(files) => onFileChange(files)}
+            onFileChange={(files) => onFileChange(files)}
         />
         <Eligibility />
     </Components.AccueilStyled>

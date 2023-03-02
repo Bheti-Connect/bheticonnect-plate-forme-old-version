@@ -50,8 +50,8 @@ const DropFileInput = props => {
             {
                 fileList.length > 0 ? (
                     <FilePreview className="drop_file_preview">
-                        <p className="drop_file_preview__title ">
-                            Ready to upload
+                        <p className="drop_file_preview__title">
+                            Fichier(s) chargé(s) :
                         </p>
                         {
                             fileList.map((item, index) => (
@@ -59,7 +59,7 @@ const DropFileInput = props => {
                                     <Image className='image' src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
                                     <div className="drop_file_preview__item__info">
                                         <p>{item.name}</p>
-                                        <p>{item.size}B</p>
+                                        {/* <p>{Math.round(item.size / 1000)}KB</p> */}
                                     </div>
                                     <span className="drop_file_preview__item__del" onClick={() => fileRemove(item)}>x</span>
                                 </div>
@@ -78,8 +78,8 @@ DropFileInput.propTypes = {
 
 const DivStyled = styled.div`
     position: relative;
-    width: 25vw;
-    height: 20vh;
+    width: 15vw;
+    height: 17vh;
     border: 2px dashed #4267b2;
     border-radius: 20px;
     display: flex;
@@ -110,8 +110,8 @@ const DivStyled = styled.div`
         padding: 10px;
     }
     .drop_file_input__label img {
-        width: 32%;
-        height: 30%;
+        width: 28%;
+        height: 26%;
     }
 `
 
@@ -120,26 +120,27 @@ const FilePreview = styled.div`
 
     p {
     font-weight: 500;
-    font-size: 15px;
+    font-size: 12.5px;
 }
 
 .drop_file_preview__title {
-    margin-bottom: 20px;
+    width: 200px;
+    margin-bottom: 10px;
 }
 
 .drop_file_preview__item {
-    width: 25vw;
+    width: 22vw;
     height: 7.3vh;
     position: relative;
     display: flex;
     margin-bottom: 10px;
     background-color: #D4E6F1;
-    padding: 15px;
+    padding: 10px;
     border-radius: 20px;
     .image {
-    width: 43px;
-    height: 47px;
-    margin-right: 20px;
+    width: 30px;
+    height: 35px;
+    margin-right: 10px;
 }
 
 .drop_file_preview__item__info {
@@ -151,8 +152,8 @@ const FilePreview = styled.div`
 .drop_file_preview__item__del {
     background-color: #CB4335;
     color: #FFF;
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     display: flex;
     align-items: center;
