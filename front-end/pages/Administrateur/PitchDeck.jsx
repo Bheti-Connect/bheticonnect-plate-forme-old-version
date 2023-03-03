@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Image from 'next/image'
+import Image from 'next/image';
+import Corporation from '../../assets/images/corporation.png';
+import Chat from '../../assets/images/chat.png';
 import user from '../../assets/images/user-image.png'
 import send from '../../assets/images/send.png'
 import sendPitch from './sendPitch'
-// import DropFileInput from "./DropFileInput";
-import DropZone from "./DropZone";
 import DropFileInput from "./DropFileInput";
 
 
@@ -77,9 +77,19 @@ const PitchDeck = () => {
                     </div>
                 </Decks>
                 <Companies>
-
-                    <div>
-                        Bonjour, il y a plusieurs façon de 
+                    <div className="company_name">
+                        <h3 className="company">Société</h3> 
+                    </div>
+                    <div className="company_details details">
+                        <div className="div_one">
+                            <Image src={Corporation} className="company_icon"  alt='corporation icon' />
+                        </div>
+                        <div className="div_two">
+                            <h4>Bheti Connect</h4>
+                        </div>
+                        <div className="div_three">
+                            <Image src={Chat} className="ask_pitch_deck" alt='corporation icon' />
+                        </div>
                     </div>
                 </Companies>
 
@@ -249,11 +259,49 @@ const Decks = styled.div`
 `
 
 const Companies = styled.div`
+    position: relative;
     width: 300px;
     background: #FFF;
     height: 60vh;
     border-radius: 30px;
-
+    align-items: center;
+    .company{
+        margin-left: 30px;
+    }
+    .company_details{
+        position: relative;
+        align-items: center;
+        right: 500px;
+        display: flex;
+        justify-content: center;
+        .div_one{
+            position: relative;
+            .company_icon{
+                width: 25px;
+                height: 25px;
+            }
+        }
+        .div_two{
+            position: relative;
+            width: 7vw;
+            h4{
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                color: #641C1C;
+                
+            }
+        }
+        .div_three{
+            position: relative;
+            .ask_pitch_deck{
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
 `
 
 export default PitchDeck
