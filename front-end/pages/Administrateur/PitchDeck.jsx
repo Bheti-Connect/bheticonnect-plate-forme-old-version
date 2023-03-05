@@ -283,7 +283,6 @@ const Companies = styled.div`
         }
         .div_two{
             position: relative;
-            width: 7vw;
             h4{
                 font-family: 'Inter';
                 font-style: normal;
@@ -291,14 +290,14 @@ const Companies = styled.div`
                 font-size: 16px;
                 line-height: 24px;
                 color: #641C1C;
-                
+                width: 7vw;
             }
         }
         .div_three{
             position: relative;
             .ask_pitch_deck{
-                width: 35px;
-                height: 35px;
+                width: 25px;
+                height: 25px;
             }
         }
     }
