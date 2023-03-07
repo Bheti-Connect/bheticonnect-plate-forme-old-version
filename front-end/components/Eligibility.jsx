@@ -50,8 +50,11 @@ const Eligibility = () => {
 
 const Container = styled.div`
 position: relative;
-top: 68vh;
+top: 65vh;
 margin-left: 7vw;
+@media only screen and (max-width: 1440px) {
+    top: 82vh;
+}
 `
 
 const TitleContainer = styled.div`
@@ -63,6 +66,14 @@ h3 {
 const EligibilityContainer = styled.div`
 display: block;
 margin-top: 2vh;
+.explanation {
+    p {
+        font-size: 16px;
+        font-family: 'Nunito', sans-serif;
+
+
+    }
+}
 
 `
 
